@@ -1,0 +1,135 @@
+.agegate {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(26, 26, 27, 0.72);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-4);
+
+  &__box {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--sp-6) var(--sp-5);
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__title {
+    color: var(--primary);
+  }
+
+  // Choix de la méthode (CNI / webcam)
+  &__methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    margin-top: var(--sp-5);
+  }
+
+  &__legal {
+    margin-top: var(--sp-5);
+    margin-bottom: 0;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.02em;
+  }
+}
+
+.method-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--sp-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  transition: border-color 0.15s ease, transform 0.05s ease;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &__icon {
+    font-size: 1.8rem;
+  }
+  &__label {
+    font-weight: 700;
+    color: var(--text);
+  }
+  &__desc {
+    font-size: var(--fs-xs);
+  }
+}
+
+// --- Étapes de vérification (CNI / webcam), réutilisées à l'inscription ---
+.verify {
+  text-align: center;
+
+  &__back {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    padding: 0;
+    margin-bottom: var(--sp-3);
+    float: left;
+  }
+
+  &__title {
+    color: var(--primary);
+    clear: both;
+  }
+
+  &__video-wrap {
+    margin: var(--sp-4) 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-tertiary);
+    aspect-ratio: 4 / 3;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); // effet miroir (selfie webcam)
+
+    // CNI : document à lire → pas de miroir (sinon texte inversé à l'écran).
+    &--doc {
+      transform: none;
+    }
+  }
+
+  &__methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  &__loading {
+    margin-top: var(--sp-4);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  &__error {
+    margin-top: var(--sp-3);
+    color: var(--danger);
+    font-size: var(--fs-sm);
+  }
+
+  &__denied {
+    margin-top: var(--sp-3);
+    color: var(--danger);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+  }
+}

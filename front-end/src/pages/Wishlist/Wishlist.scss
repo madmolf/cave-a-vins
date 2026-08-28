@@ -1,0 +1,25 @@
+.wishlist {
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-4);
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: var(--sp-3);
+
+    &--grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &--list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

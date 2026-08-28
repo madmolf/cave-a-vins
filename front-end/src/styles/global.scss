@@ -1,0 +1,171 @@
+@use "./tokens";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--text);
+  background: var(--frame); // liseré autour de la colonne mobile sur desktop
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--sp-3);
+}
+
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+
+p {
+  line-height: 1.55;
+  margin: 0 0 var(--sp-3);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+// --- Boutons réutilisables ---
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.05s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &--primary {
+    background: var(--primary);
+    color: var(--on-primary);
+
+    &:hover {
+      background: var(--primary-hover);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--border);
+  }
+
+  // Sur fond sombre (hero, section bordeaux)
+  &--light {
+    background: var(--on-primary);
+    color: var(--color-ink);
+
+    &:hover {
+      background: #fffdf8;
+    }
+  }
+
+  &--outline-light {
+    background: transparent;
+    color: var(--on-primary);
+    border: 1.5px solid rgba(241, 236, 222, 0.5);
+  }
+
+  &--block {
+    width: 100%;
+  }
+}
+
+// --- Cartes ---
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+// --- Champ de formulaire (réutilisé : login, admin, vérif d'âge…) ---
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+
+  input,
+  select {
+    padding: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-base);
+    font-weight: 400;
+    color: var(--text);
+
+    &:focus {
+      outline: 2px solid var(--primary);
+      border-color: transparent;
+    }
+  }
+}
+
+// --- Chips / mots-clés (réutilisés : cave, recherche, fiche, admin) ---
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.chip {
+  padding: var(--sp-1) var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+  font-size: var(--fs-sm);
+  text-transform: capitalize;
+  color: var(--text);
+
+  &--active {
+    background: var(--primary);
+    color: var(--on-primary);
+    border-color: var(--primary);
+  }
+}
+
+// --- Utilitaires ---
+.container {
+  padding: var(--sp-4);
+}
+.muted {
+  color: var(--text-muted);
+}
+.stack > * + * {
+  margin-top: var(--sp-3);
+}

@@ -1,0 +1,98 @@
+@use "sass:color";
+
+// ============================================================
+//  DESIGN TOKENS — Rich Cellar
+//  Charte de la maquette v1 (accueil) :
+//   fond blanc cassé #F1ECDE · bordeaux #6D1E2C (sections) ·
+//   brun #4A3324 (CTA & liens) · Playfair (titres) + Jakarta (corps).
+//  Les composants n'utilisent QUE les rôles sémantiques (--primary…).
+// ============================================================
+
+// --- Couleurs de marque (maquette) ---
+$cream:    #f1ecde; // blanc cassé — fond
+$offwhite: #faf7ef; // surfaces / cartes
+$bordeaux: #6d1e2c; // sections secondaires plein cadre
+$brown:    #4a3324; // CTA & liens
+$ink:      #2b2018; // texte
+
+// --- Nuances dérivées (SCSS) ---
+$brown-dark:    color.adjust($brown, $lightness: -6%);
+$bordeaux-dark: color.adjust($bordeaux, $lightness: -6%);
+$ink-soft:      color.adjust($ink, $lightness: 30%);
+$border-col:    color.adjust($cream, $lightness: -8%);
+
+:root {
+  // Couleurs de marque
+  --color-cream: #{$cream};
+  --color-offwhite: #{$offwhite};
+  --color-bordeaux: #{$bordeaux};
+  --color-brown: #{$brown};
+  --color-ink: #{$ink};
+
+  // Rôles sémantiques (à utiliser dans les composants)
+  --bg: #{$cream};
+  --bg-elevated: #{$offwhite};
+  --surface: #{$offwhite};
+  --text: #{$ink};
+  --text-muted: #{$ink-soft};
+  --primary: #{$brown};          // CTA, liens, header, boutons
+  --primary-hover: #{$brown-dark};
+  --on-primary: #{$cream};
+  --accent: #{$bordeaux};        // sections bordeaux, accents
+  --accent-dark: #{$bordeaux-dark};
+  --on-accent: #{$cream};
+  --frame: #{$ink};              // liseré sombre autour de la colonne mobile
+  --border: #{$border-col};
+  --success: #3f7d4e;
+  --danger: #b23b3b;
+
+  // Typographie (maquette : Playfair Display / Plus Jakarta Sans)
+  --font-title: "Playfair Display", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+
+  // Espacements (échelle 4px)
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-8: 48px;
+
+  // Rayons & ombres
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(43, 32, 24, 0.06);
+  --shadow: 0 4px 16px rgba(43, 32, 24, 0.10);
+  --shadow-lg: 0 12px 32px rgba(43, 32, 24, 0.18);
+
+  // Layout mobile-first (résolutions maquette : 390 / 834 / 1440)
+  --app-max-width: 390px;
+  --header-h: 56px;
+  --z-header: 100;
+  --z-modal: 1000;
+}
+
+// Tablette : la colonne s'élargit à 834px, header plus haut (breakpoint maquette).
+@media (min-width: 834px) {
+  :root {
+    --app-max-width: 834px;
+    --header-h: 68px;
+  }
+}
+
+// Desktop : colonne 1440px, header 76px (breakpoint maquette).
+@media (min-width: 1440px) {
+  :root {
+    --app-max-width: 1440px;
+    --header-h: 76px;
+  }
+}

@@ -1,0 +1,88 @@
+.winecard {
+  display: block;
+  color: var(--text);
+  transition: transform 0.08s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &__photo {
+    background: linear-gradient(135deg, #efe7d6, #e0d3bb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__placeholder {
+    font-size: 2.4rem;
+    opacity: 0.5;
+  }
+
+  &__body {
+    padding: var(--sp-3);
+  }
+
+  &__name {
+    font-size: var(--fs-base);
+    margin: 0 0 2px;
+  }
+
+  &__producer {
+    font-size: var(--fs-xs);
+    margin: 0 0 var(--sp-2);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--fs-sm);
+  }
+
+  &__color {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    color: var(--text-muted);
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  &__price {
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  // --- Vue grille ---
+  &--grid &__photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  // --- Vue liste ---
+  &--list {
+    display: flex;
+
+    .winecard__photo {
+      width: 96px;
+      flex-shrink: 0;
+    }
+    .winecard__body {
+      flex: 1;
+    }
+  }
+}
