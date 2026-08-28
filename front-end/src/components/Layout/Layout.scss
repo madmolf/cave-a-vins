@@ -1,0 +1,100 @@
+.app {
+  position: relative;
+  max-width: var(--app-max-width);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+
+  &__main {
+    flex: 1;
+  }
+}
+
+// --- Header (crème, 3 zones : menu+Les caves · logo centré · avatar/Connexion) ---
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-4);
+  background: var(--bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    flex: 1;
+    min-width: 0;
+  }
+  &__right {
+    justify-content: flex-end;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: var(--accent);
+
+    &-text {
+      display: none; // masqué en mobile, visible en tablette+
+      font-family: var(--font-title);
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      color: var(--text);
+    }
+  }
+
+  &__navlink {
+    color: var(--text);
+    font-weight: 500;
+    font-size: var(--fs-sm);
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: var(--text);
+  }
+
+  &__user-name {
+    display: none; // masqué en mobile, visible en tablette+
+    font-size: var(--fs-sm);
+    font-weight: 500;
+  }
+
+  @media (min-width: 834px) {
+    padding: 0 28px;
+
+    .header__logo-text,
+    .header__user-name {
+      display: inline;
+    }
+
+    // Avatar + nom en pastille (comme la maquette)
+    .header__avatar {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      padding: 4px 14px 4px 4px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 48px;
+  }
+
+}

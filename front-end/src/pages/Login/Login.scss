@@ -1,0 +1,47 @@
+.login {
+  padding-top: var(--sp-6);
+
+  &__brand {
+    text-align: center;
+    margin-bottom: var(--sp-5);
+
+    h1 {
+      margin-top: var(--sp-2);
+    }
+  }
+
+  &__mark {
+    font-size: 2.6rem;
+  }
+
+  &__switch {
+    text-align: center;
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0;
+  }
+
+  &__note {
+    font-size: var(--fs-xs);
+    text-align: center;
+    margin: 0;
+  }
+
+  &__verify {
+    text-align: center;
+  }
+
+  &__methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    margin: var(--sp-4) 0;
+  }
+}

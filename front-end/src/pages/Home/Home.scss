@@ -1,0 +1,489 @@
+.home {
+  background: var(--bg);
+}
+
+/* ===================== HERO ===================== */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--on-primary);
+  background: var(--bg);
+  padding: 48px 20px 96px;
+  text-align: center;
+
+  // Photo de cave qui s'efface dans le blanc cassé (mask-image, signature maquette).
+  &__media {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+    z-index: 0;
+  }
+
+  // Voile sombre pour la lisibilité du texte clair.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(20, 13, 10, 0.5), rgba(20, 13, 10, 0.2) 45%, transparent 65%);
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #e4c9a0; // gold/tan
+    margin-bottom: var(--sp-3);
+  }
+
+  &__title {
+    color: var(--on-primary);
+    font-size: 34px;
+    line-height: 1.12;
+    margin-bottom: var(--sp-4);
+  }
+
+  &__lead {
+    color: rgba(250, 247, 239, 0.88);
+    font-size: 15px;
+    max-width: 32ch;
+    margin: 0 auto 28px;
+  }
+
+  &__scan {
+    max-width: 340px;
+    min-height: 52px;
+    font-size: 15.5px;
+    margin: 0 auto;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--on-primary);
+    font-weight: 600;
+  }
+
+  &__note {
+    font-size: var(--fs-xs);
+    color: rgba(241, 236, 222, 0.6);
+    margin: var(--sp-5) 0 0;
+  }
+}
+
+/* ===================== SECTIONS ===================== */
+.home-section {
+  padding: 40px 20px;
+
+  &__label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--sp-3);
+  }
+
+  &__title {
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+
+  &__lead {
+    font-size: 14.5px;
+    margin-bottom: 18px;
+  }
+
+  &--cream {
+    background: var(--bg);
+    color: var(--text);
+
+    .home-section__label {
+      color: var(--accent);
+    }
+    .home-section__lead {
+      color: rgba(43, 32, 24, 0.74);
+    }
+  }
+
+  &--bordeaux {
+    background: var(--accent);
+    color: var(--on-accent);
+
+    .home-section__label {
+      color: rgba(241, 236, 222, 0.7);
+    }
+    .home-section__title {
+      color: var(--on-accent);
+    }
+    .home-section__lead {
+      color: rgba(241, 236, 222, 0.85);
+    }
+    .home-media__img {
+      aspect-ratio: 29 / 15; // bouteilles un peu plus basses (maquette)
+    }
+    .btn {
+      min-height: 50px;
+    }
+  }
+}
+
+/* Bloc image (sections) — coins arrondis 14px comme la maquette */
+.home-media {
+  position: relative;
+  margin: 0 0 20px;
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+}
+
+/* Liste à puces sommelier (desktop) */
+.home-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--sp-4);
+
+  li {
+    position: relative;
+    padding-left: var(--sp-4);
+    margin-bottom: var(--sp-2);
+    font-size: 14px;
+    color: var(--text-muted);
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+  }
+}
+
+/* Carte « fiche » posée sur l'image (desktop) */
+.home-fiche {
+  position: absolute;
+  left: -18px;
+  bottom: 26px;
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &__badge {
+    align-self: flex-start;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  &__name {
+    font-family: var(--font-title);
+    font-size: 18px;
+    color: var(--text);
+  }
+  &__meta {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+}
+
+/* Lien texte « Voir une fiche complète → » */
+.home-link {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 700;
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+}
+
+/* Statistiques (section bordeaux) */
+.home-stats {
+  display: flex;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.home-stat {
+  flex: 1;
+  text-align: center;
+
+  &__num {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--on-accent);
+  }
+
+  &__label {
+    display: block;
+    margin-top: var(--sp-1);
+    font-size: var(--fs-xs);
+    color: rgba(241, 236, 222, 0.8);
+  }
+}
+
+/* ===================== FOOTER (crème) ===================== */
+.home-footer {
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--sp-6) var(--sp-4) var(--sp-8);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+
+    strong {
+      font-family: var(--font-title);
+      font-size: var(--fs-lg);
+      color: var(--text);
+    }
+  }
+
+  &__logo {
+    font-size: 1.3rem;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3) var(--sp-4);
+    margin-bottom: var(--sp-5);
+
+    a {
+      color: var(--accent);
+      font-size: var(--fs-sm);
+      font-weight: 500;
+
+      &:hover {
+        color: var(--accent-dark);
+      }
+    }
+  }
+
+  &__legal {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+/* ===================== TABLETTE (≥ 834px) ===================== */
+@media (min-width: 834px) {
+  .home-hero {
+    padding: 72px 40px 172px;
+
+    &__title {
+      font-size: 46px;
+    }
+    &__lead {
+      font-size: 16px;
+      max-width: 520px;
+    }
+    &__scan {
+      width: auto; // largeur auto centrée (pas pleine largeur)
+      min-width: 240px;
+    }
+  }
+
+  .home-section {
+    display: grid;
+    column-gap: 32px;
+    align-items: center;
+    padding: 52px 28px;
+
+    &__title {
+      font-size: 30px;
+    }
+
+    // Section 01 : texte à gauche · image à droite · lien dessous
+    &--cream {
+      grid-template-columns: 1fr 329px;
+      padding-top: 24px; // le hero (fondu) comble déjà l'espace au-dessus
+      padding-bottom: 40px;
+
+      .home-section__body {
+        grid-column: 1;
+      }
+      .home-media {
+        grid-column: 2;
+        align-self: center;
+        margin: 0;
+
+        .home-media__img {
+          aspect-ratio: 11 / 10;
+        }
+      }
+      .home-link {
+        margin-top: var(--sp-4); // espace lead → lien
+      }
+    }
+
+    // Section 02 : image à gauche · texte à droite (inversé)
+    &--bordeaux {
+      grid-template-columns: 331px 1fr;
+
+      .home-media {
+        grid-column: 1;
+        align-self: center;
+        margin: 0;
+
+        .home-media__img {
+          aspect-ratio: 6 / 5;
+        }
+      }
+      .home-section__body {
+        grid-column: 2;
+      }
+      .btn {
+        width: auto; // « Créer ma cave » en pastille auto-largeur
+      }
+    }
+  }
+
+  // Footer en colonnes (brand + baseline · Explorer · Compte)
+  .home-footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 24px;
+    align-items: start;
+    padding: 48px 31px 32px;
+
+    &__brand-head {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-3);
+
+      strong {
+        font-family: var(--font-title);
+        font-size: var(--fs-lg);
+        color: var(--text);
+      }
+    }
+    &__tagline {
+      font-size: 14px;
+      margin: 0;
+      max-width: 32ch;
+    }
+    &__col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+
+      h4 {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        margin: 0 0 var(--sp-1);
+      }
+      a {
+        color: var(--accent);
+        font-size: 14px;
+
+        &:hover {
+          color: var(--accent-dark);
+        }
+      }
+    }
+    &__legal {
+      grid-column: 1 / -1;
+      margin-top: var(--sp-6);
+    }
+  }
+}
+
+/* ===================== DESKTOP (≥ 1440px) ===================== */
+@media (min-width: 1440px) {
+  .home-hero {
+    padding: 96px 48px 210px;
+
+    &__title {
+      font-size: 64px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__lead {
+      font-size: 17px;
+      max-width: 600px;
+    }
+  }
+
+  .home-section {
+    column-gap: 64px;
+    padding: 80px 48px;
+
+    &__title {
+      font-size: 40px;
+    }
+
+    &--cream {
+      grid-template-columns: 1fr 603px;
+      padding-top: 40px;
+      padding-bottom: 64px;
+
+      .home-media .home-media__img {
+        aspect-ratio: 603 / 420;
+      }
+    }
+
+    &--bordeaux {
+      grid-template-columns: 607px 1fr;
+
+      .home-media .home-media__img {
+        aspect-ratio: 607 / 400;
+      }
+    }
+  }
+
+  // Stats en encadrés (boîtes bordées)
+  .home-stats {
+    gap: 16px;
+  }
+  .home-stat {
+    border: 0.8px solid rgba(241, 236, 222, 0.24);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: left;
+
+    &__num {
+      font-size: 28px;
+    }
+  }
+
+  // Footer : 3 colonnes de liens (Explorer · Compte · Maison) + brand
+  .home-footer {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 64px 48px 40px;
+  }
+}

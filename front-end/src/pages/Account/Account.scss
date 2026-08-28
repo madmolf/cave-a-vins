@@ -1,0 +1,30 @@
+.account {
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-4);
+  }
+
+  &__info {
+    p {
+      margin: 0;
+    }
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    align-self: center;
+    padding: 0;
+  }
+
+  &__note {
+    font-size: var(--fs-xs);
+    text-align: center;
+    margin: 0;
+  }
+}

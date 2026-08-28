@@ -5,6 +5,15 @@
 > Reprise du développement : **mardi 4 novembre 2026**.
 > Rédigé par : Alexandre GAILLARD (chef de projet).
 
+> **🔄 Révision du 28 août 2026 — audit de la branche `front`.**
+> Le front-end React/Vite a été poussé sur la branche **`front`** (dossier
+> `front-end/`) après la rédaction initiale de cette fiche. Plusieurs points
+> ci-dessous ont donc été **corrigés à partir du code réel** : ils sont marqués
+> « *(MAJ 28/08)* ». Le nom interne du produit est **« Rich Cellar »**. Les
+> parties non vérifiables depuis le front (back-end, schéma BDD réel) ont été
+> **annotées**, pas réécrites. Voir aussi le mémo
+> `front-end/docs/memo-ecarts-contrat-bdd.md` et l'**Annexe** en fin de fiche.
+
 **Lis ce fichier en entier avant de lancer la moindre commande.** Il a été écrit
 pour toi, dix semaines plus tard, quand tu auras oublié comment tout ça marche.
 
@@ -28,8 +37,9 @@ cadre du titre professionnel DWWM.
 | Élément | État | Où |
 |---|---|---|
 | Maquettes des 10 écrans | Terminées | Drive design partagé |
-| Page **Home** | Codée et dynamique | Branche front (voir §7) |
-| 9 autres écrans | **Maquette seulement**, pas de code | — |
+| **Les 10 écrans** *(MAJ 28/08)* | **Tous codés** (React/Vite) et navigables, mais alimentés par des **données mock** (`front-end/src/data/wines.js`) — **pas encore branchés sur l'API** | Branche `front`, dossier `front-end/src/pages/` |
+| Vérification d'âge à l'inscription *(MAJ 28/08)* | **Implémentée** côté client (CNI + webcam) ; RGPD : seul un booléen `ageVerified` est conservé | Branche `front` (voir §12) |
+| Couche API typée (auth, wine, cave, profile) *(MAJ 28/08)* | **Écrite**, format d'auth tranché (cookie JWT `HttpOnly`), mais non appelée par les écrans | `front-end/src/api/` (voir §9) |
 | Schéma de base de données | Corrigé le 24/08, table `utilisateur_cave` ajoutée | `docs/` (voir §6) |
 | Contrat d'API | Figé le 24/08 (types partagés) | `shared/types/` (voir §9) |
 | Package graphique (icônes, logos, tokens) | Livré | Drive design partagé |
@@ -50,11 +60,14 @@ cadre du titre professionnel DWWM.
 Ces trois chantiers ont été reportés **exprès**. Ce n'est pas un oubli, ne les
 attaque pas en priorité :
 
-1. **Intégration du scanner `@zxing/browser`** (REC-FRO-02) — l'interface est
-   prête, le branchement caméra reste à faire.
+1. ~~**Intégration du scanner `@zxing/browser`** (REC-FRO-02)~~ — **Fait depuis,
+   sur la branche `front`** *(MAJ 28/08)* : le scan de code-barre est décodé en
+   direct via `@zxing/browser` (chargé à la demande) dans
+   `front-end/src/pages/Scan/`. Reste à le brancher sur une vraie recherche API.
 2. **Cache et fallback de l'API GrapeMinds** (REC-BAC-04) — trop de logique
-   métier, à traiter en Phase 1 post-stage.
+   métier, à traiter en Phase 1 post-stage. *(Toujours d'actualité.)*
 3. **Traduction anglaise** (REC-DES-03) — non bloquant pour le MVP.
+   *(Toujours d'actualité.)*
 
 ---
 
@@ -111,6 +124,16 @@ cave-a-vins/
 ├── README.md
 └── REPRISE.md        # ce fichier
 ```
+
+> **⚠️ État réel du dépôt au 28/08 *(MAJ 28/08)* — l'arborescence ci-dessus est
+> la cible, pas encore la réalité.**
+> - Branche **`main`** : ne contient que `LICENSE`, `README.md` et `REPRISE.md`.
+> - Branche **`front`** : contient tout le front-end dans **`front-end/`** (et
+>   **non** `front/`), avec son propre `front-end/docs/`.
+> - Le dossier **`backend/`** n'existe encore **nulle part** : aucune ligne de
+>   NestJS n'est versionnée à ce jour.
+> - Quand tu suis le §6, remplace donc les `cd front` par `cd front-end`, et
+>   saute les étapes back tant que le dossier n'est pas créé.
 
 ---
 
@@ -184,7 +207,10 @@ npm run dev
 ```
 
 - API : <http://localhost:3000>
-- Front : `<!-- À COMPLÉTER : port du serveur de dev Vite, 5173 par défaut -->`
+- Front : <http://localhost:5173> — port Vite par défaut *(MAJ 28/08)*. Le
+  front est dans **`front-end/`** sur la branche `front` : `cd front-end && npm
+  install && npm run dev`. Scripts utiles : `npm run build`, `npm run lint`
+  (oxlint), `npm run typecheck` (tsc).
 
 ---
 
@@ -209,6 +235,16 @@ La table centrale ajoutée le 24/08 est **`utilisateur_cave`** : elle associe un
 utilisateur aux bouteilles qu'il possède (`id_utilisateur`, `id_vin`,
 `quantite`, `date_ajout`, `ouvert_echange`). Sans elle, rien du stock ni de
 l'échange ne peut fonctionner.
+
+> **⚠️ Divergence à réconcilier en priorité *(MAJ 28/08)*.** Le mémo
+> d'intégration front (`front-end/docs/memo-ecarts-contrat-bdd.md`, point 2)
+> signale qu'**aucune table de possession n'existe** dans le schéma
+> (`u838316096_Dwwm_Cave_*`) que l'équipe front a reçu — ni `utilisateur_cave`,
+> ni équivalent. Deux lectures possibles : soit le schéma partagé au front n'est
+> pas à jour, soit la table `utilisateur_cave` n'a jamais été committée. **À
+> trancher avant la Tâche 3 du sprint (CRUD « ma cave »)**, qui en dépend
+> entièrement. Note aussi que le préfixe réel de la base côté Hostinger est
+> `u838316096_Dwwm_Cave_*`, et non `dwwm_cave` (nom local du §8).
 
 ---
 
@@ -249,11 +285,24 @@ supprimer au commit suivant.
 Les types TypeScript partagés entre le front et le back ont été figés le 24/08.
 C'est le document de référence quand front et back ne sont pas d'accord.
 
-- Types partagés : `<!-- chemin exact du fichier types.ts partagé -->`
+- Types partagés (côté front) : `front-end/src/types/index.ts` *(MAJ 28/08)*.
 - Collection Postman : `docs/`
-- Format d'échange retenu : `<!-- JWT en header Authorization ou cookie httpOnly — trancher et noter ici -->`
+- Format d'échange retenu : **JWT en cookie `HttpOnly`** *(MAJ 28/08)* — tranché
+  côté front. Le client HTTP `front-end/src/api/client.ts` envoie
+  `credentials: "include"` sur chaque requête. Le back devra donc **poser le
+  cookie** à la connexion et configurer le **CORS avec `credentials`** (origine
+  explicite, pas `*`). **À confirmer explicitement côté back.**
 
 Routes principales spécifiées : `/auth` (inscription, connexion) et `/wine`.
+
+> **État du branchement *(MAJ 28/08)*.** La couche API typée du front
+> (`front-end/src/api/`) couvre déjà `auth`, `wine`, `cave` et `profile`, mais
+> **aucun écran ne l'appelle encore** : tous tournent sur les données mock
+> (`front-end/src/data/wines.js`). Le branchement réel est bloqué par **5
+> arbitrages contrat ↔ BDD** détaillés dans
+> `front-end/docs/memo-ecarts-contrat-bdd.md` (tags vs avis, table cave
+> manquante, champ `photo`, valeurs de l'enum couleur, booléen `ageVerified`).
+> C'est le premier sujet à trancher en réunion (§15).
 
 **Règle de travail pour novembre :** toute modification d'un type partagé se
 décide à deux (front + back) et se commite avant d'être utilisée. C'est
@@ -312,10 +361,15 @@ npm run build
 
 ## 12. Pièges connus — lis avant de perdre une demi-journée
 
-1. **`face-api.js` et `tesseract.js`** ont été isolés en *lazy-load* et
-   temporairement désactivés côté front pour obtenir un build de production
-   léger et sans erreur. Si tu les réactives, surveille immédiatement le poids
-   du bundle.
+1. **`face-api.js` (`@vladmandic/face-api`), `tesseract.js` et `@zxing/browser`**
+   sont désormais **actifs** sur la branche `front` *(MAJ 28/08)*, au service de
+   la **vérification d'âge à l'inscription** : `face-api` pour l'estimation d'âge
+   par webcam (`src/services/webcamAge.js`), `tesseract.js` pour l'OCR de la CNI
+   (`src/services/cniOcr.js`), `@zxing/browser` pour le scan de code-barre
+   (chargé à la demande dans `src/pages/Scan/`). Ces trois libs sont **lourdes** :
+   surveille le poids du bundle à **chaque** build de prod et garde le chargement
+   paresseux partout où c'est possible. Les modèles face-api sont versionnés dans
+   `front-end/public/models/` (fichiers `.bin`).
 2. **Version de Node** : si `npm install` échoue avec des erreurs
    incompréhensibles, vérifie ta version de Node avant toute autre chose.
 3. **`synchronize: true`** : voir §7. Ne déploie pas la configuration
@@ -383,3 +437,51 @@ retrouve dans sa cave après rechargement de la page.
 - [ ] Démarrer l'API et le front, vérifier que la page Home s'affiche.
 - [ ] Ouvrir le kanban et relire les tâches du sprint (§13).
 - [ ] Réunion d'équipe : trancher les points laissés ouverts au §9.
+
+---
+
+## Annexe — Audit de la branche `front` (28 août 2026)
+
+Cette annexe consigne ce qui a été **vérifié dans le code** de la branche
+`front` après la rédaction initiale de la fiche. Elle prime sur les mentions
+antérieures en cas de contradiction.
+
+### Ce qui est réellement en place (vérifié)
+
+- **Front-end React 19 + Vite** complet dans `front-end/`, routé avec
+  `react-router-dom` (voir `src/App.jsx`). Nom interne : **« Rich Cellar »**.
+- **10 écrans codés et navigables** : `Home`, `Login`, `Cave`, `WineDetail`,
+  `SearchResults`, `Wishlist`, `Account`, `Scan`, plus l'admin
+  (`admin/AddWine`, `admin/AddKeyword`). Ils tournent tous sur des **données
+  mock** (`src/data/wines.js`) — **aucun appel API réel** pour l'instant.
+- **Couche API typée** (`src/api/` : `auth`, `wine`, `cave`, `profile`) avec un
+  client `fetch` (`client.ts`) qui envoie le **cookie JWT `HttpOnly`**
+  (`credentials: "include"`).
+- **Vérification d'âge à l'inscription, 100 % côté client** : `AgeGate`,
+  OCR CNI (`tesseract.js`), estimation par webcam (`face-api`), scan de
+  code-barre (`@zxing/browser`). RGPD : **seul un booléen `ageVerified` est
+  conservé**, jamais la date de naissance ni les images.
+- Styles SCSS avec design tokens (`src/styles/tokens.scss`, `global.scss`).
+- Outillage : `oxlint` (lint), `tsc --noEmit` (typecheck), build Vite.
+
+### Points bloquants à trancher (issus de `front-end/docs/memo-ecarts-contrat-bdd.md`)
+
+| # | Sujet | À décider |
+|---|-------|-----------|
+| 1 | Tags vs Avis | Séparer labels partagés (`/tags`) et commentaires perso (`/avis`) ? |
+| 2 | **Cave** | **Créer la table de liaison utilisateur ↔ bouteilles — bloquant, et en contradiction avec le §7** |
+| 3 | Profil | Ajouter `photo` à `utilisateurs` ou le retirer du contrat ; exposer `bio` ? |
+| 4 | Couleur | Front s'aligne sur l'enum `rouge/blanc/rose/effervescent` — à confirmer |
+| 5 | Vérif d'âge | Accepter `ageVerified` (booléen) à l'inscription + colonne dédiée |
+
+### Équipe (d'après le mémo)
+
+- **Front-end** : Thiziri, Salah, Loïc.
+- **Back-end** : Le Z, Orian, Teddy.
+- **Chef de projet** : Alexandre GAILLARD.
+
+### Reste à faire côté front (non bloquant immédiat)
+
+- Brancher les écrans sur la vraie API une fois les 5 points ci-dessus tranchés.
+- Relier le scan `@zxing` à une recherche API réelle (aujourd'hui : mock).
+- Décider du sort de l'ancien `index.html` racine (supprimé sur `main`).

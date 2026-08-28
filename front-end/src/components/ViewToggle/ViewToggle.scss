@@ -1,0 +1,21 @@
+.view-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+
+  button {
+    background: transparent;
+    border: none;
+    padding: var(--sp-2) var(--sp-3);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+
+    &.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+  }
+}
