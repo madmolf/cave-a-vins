@@ -12,7 +12,12 @@
 > « *(MAJ 28/08)* ». Le nom interne du produit est **« Rich Cellar »**. Les
 > parties non vérifiables depuis le front (back-end, schéma BDD réel) ont été
 > **annotées**, pas réécrites. Voir aussi le mémo
-> `front-end/docs/memo-ecarts-contrat-bdd.md` et l'**Annexe** en fin de fiche.
+> `front-end/docs/memo-ecarts-contrat-bdd.md` et l'**Annexe A** en fin de fiche.
+>
+> **Complément du même jour — audit du back-end** (poussé sur `main` après la PR
+> front). Marqué « *(MAJ 28/08 – back)* ». Points clés : le back est un
+> **prototype en mémoire**, configuré pour **PostgreSQL** (pas MariaDB) et géré
+> avec **pnpm**. Détail complet en **Annexe B**.
 
 **Lis ce fichier en entier avant de lancer la moindre commande.** Il a été écrit
 pour toi, dix semaines plus tard, quand tu auras oublié comment tout ça marche.
@@ -77,7 +82,7 @@ attaque pas en priorité :
 |---|---|
 | Back-end | NestJS + TypeORM (TypeScript) |
 | Front-end | React + TypeScript (Vite) |
-| Base de données | MariaDB (via le serveur local type WAMP/XAMPP/Laragon) |
+| Base de données | ⚠️ **Divergence** *(MAJ 28/08 – back)* : la fiche prévoit **MariaDB**, mais le back committé par Orian est configuré pour **PostgreSQL** (`type: 'postgres'`, base hébergée via `DATABASE_URL` + SSL). Seule l'entité `Vin` est réellement persistée. **À trancher — voir Annexe B.** |
 | Hébergement | Hostinger, accès **FTP** uniquement — **rien n'est déployé à ce jour** |
 | API tierce (données vins) | GrapeMinds — `https://grapeminds.fr/` |
 | Gestionnaire de paquets | npm |
@@ -125,15 +130,16 @@ cave-a-vins/
 └── REPRISE.md        # ce fichier
 ```
 
-> **⚠️ État réel du dépôt au 28/08 *(MAJ 28/08)* — l'arborescence ci-dessus est
-> la cible, pas encore la réalité.**
-> - Branche **`main`** : ne contient que `LICENSE`, `README.md` et `REPRISE.md`.
-> - Branche **`front`** : contient tout le front-end dans **`front-end/`** (et
->   **non** `front/`), avec son propre `front-end/docs/`.
-> - Le dossier **`backend/`** n'existe encore **nulle part** : aucune ligne de
->   NestJS n'est versionnée à ce jour.
-> - Quand tu suis le §6, remplace donc les `cd front` par `cd front-end`, et
->   saute les étapes back tant que le dossier n'est pas créé.
+> **⚠️ État réel du dépôt *(MAJ 28/08 – back)* — l'arborescence ci-dessus est la
+> cible ; voici ce qui est réellement sur `main` aujourd'hui.**
+> - Le front-end a été fusionné dans `main` (PR #1) : il vit dans **`front-end/`**
+>   (et **non** `front/`), avec son propre `front-end/docs/`.
+> - Le back-end a été poussé par Orian dans **`backend/`** (NestJS). ⚠️ **Il a été
+>   committé directement sur `main`, sans PR** — pense à rappeler la règle §10.
+> - Quand tu suis le §6, remplace les `cd front` par `cd front-end`. Le back
+>   utilise **pnpm** (`pnpm install`), pas npm, et **PostgreSQL**, pas MariaDB
+>   (voir Annexe B). L'essentiel du back est encore un **prototype en mémoire** :
+>   ne t'attends pas à une persistance réelle hors des vins.
 
 ---
 
@@ -440,7 +446,7 @@ retrouve dans sa cave après rechargement de la page.
 
 ---
 
-## Annexe — Audit de la branche `front` (28 août 2026)
+## Annexe A — Audit de la branche `front` (28 août 2026)
 
 Cette annexe consigne ce qui a été **vérifié dans le code** de la branche
 `front` après la rédaction initiale de la fiche. Elle prime sur les mentions
@@ -485,3 +491,81 @@ antérieures en cas de contradiction.
 - Brancher les écrans sur la vraie API une fois les 5 points ci-dessus tranchés.
 - Relier le scan `@zxing` à une recherche API réelle (aujourd'hui : mock).
 - Décider du sort de l'ancien `index.html` racine (supprimé sur `main`).
+
+---
+
+## Annexe B — Audit du back-end (28 août 2026)
+
+Le back-end NestJS a été poussé par **Orian** dans `backend/` **directement sur
+`main`** (commit `4ad227f`, « Ajout du backend au projet »), sans passer par une
+PR. Voici ce que dit **le code réel**. Sa propre doc `backend/API_SPECIFICATIONS.md`
+est explicite : *« Les données sont actuellement stockées en mémoire et sont
+perdues au redémarrage du serveur. »* → **c'est un prototype**, à ne pas prendre
+pour un back fonctionnel.
+
+### Divergences majeures avec la fiche (à trancher en réunion)
+
+1. **Base de données : PostgreSQL, pas MariaDB.** `backend/src/app.module.ts`
+   configure TypeORM en `type: 'postgres'` (dépendance `pg`, connexion par
+   `DATABASE_URL` + SSL `rejectUnauthorized: false` → base **hébergée**, pas un
+   MariaDB local WAMP/XAMPP). Toute la partie §3/§6/§8 de la fiche (MariaDB,
+   `dwwm_cave`, Hostinger) est donc à revoir, **ou** le choix Postgres est à
+   acter et à propager. `mysql2` traîne encore dans les dépendances mais n'est
+   pas utilisé.
+2. **Gestionnaire de paquets : pnpm** (`backend/pnpm-lock.yaml`), alors que la
+   fiche dit npm partout. À harmoniser (front = npm, back = pnpm pour l'instant).
+3. **Persistance partielle.** Seule l'entité **`Vin`** est réellement mappée et
+   persistée (`vins.service.ts` via un vrai `Repository`). Elle est propre et
+   alignée sur l'enum couleur `rouge/blanc/rose/effervescent` (règle le point 4
+   du mémo front). En revanche :
+   - `backend/src/user/entities/user.entity.ts` est un **stub vide**
+     (`export class User {}`) et n'est **même pas enregistré** dans TypeORM
+     (`entities: [Vin]` uniquement) → **aucune table utilisateurs**.
+   - `UserService` ne fait que renvoyer des chaînes d'exemple (scaffold Nest par
+     défaut : *« This action adds a new user »*).
+   - **Auth, profil, cave et tags sont stockés en mémoire** (tableaux JS dans
+     `AuthService` / `VinsService`) → tout est perdu au redémarrage.
+
+### Sécurité / auth — points à corriger avant tout déploiement
+
+4. **Ce n'est pas un vrai JWT.** `AuthService.generateToken()` fabrique un jeton
+   maison `base64(JSON).HMAC-SHA256`, avec un **secret en dur dans le code**
+   (`'dev-secret-change-me'`, dupliqué dans `VinsService`) et **sans expiration**
+   (le `iat` n'est jamais vérifié). À remplacer par `@nestjs/jwt` + secret via
+   `.env`, et le secret en dur est à considérer comme **compromis** (§8).
+5. **Le login renvoie aussi le token dans le corps JSON** (`{ userId, token }`)
+   en plus du cookie `HttpOnly` — ça annule une partie de l'intérêt du cookie.
+6. **Cookie incompatible avec le dev local.** Le cookie `token` est posé en
+   `Secure` + `SameSite=Strict`. En local (front `http://localhost:5173` → API
+   `http://localhost:4000`), `Secure` bloque l'envoi hors HTTPS et `SameSite=Strict`
+   bloque le cross-site : **le cookie ne sera pas transmis**. Prévoir un réglage
+   dev (`Secure` conditionnel, `SameSite=Lax` ou proxy Vite same-origin).
+7. **CORS `origin: true`** (reflet de toute origine) avec `credentials: true` :
+   acceptable en dev, à restreindre à une origine explicite en prod.
+
+### Non résolu (confirme les manques déjà listés)
+
+8. **`ageVerified` ignoré.** `POST /api/auth/register` n'accepte que
+   `{ email, password }` ; le booléen de vérif d'âge du front n'est ni reçu ni
+   stocké (point 5 du mémo → toujours ouvert).
+9. **Pas de vraie cave.** `GET /api/user/cave` renvoie un faux `PreferedWine`
+   (3 premiers éléments d'un tableau en mémoire). Aucune table de possession
+   utilisateur ↔ bouteille (point 2 du mémo, et §7 → toujours ouvert).
+
+### Détails à vérifier
+
+- **Port** : `.env.exemple` fixe `PORT=4000` (et non 3000). Le fichier s'appelle
+  `.env.exemple` (orthographe) et contient un `DATABASE_URL=https//bdd.exemple`
+  manifestement factice.
+- **`typeorm: "^1.1.0"`** dans `backend/package.json` est suspect (TypeORM est en
+  0.3.x ; `@nestjs/typeorm@^11` attend du 0.3). À vérifier au premier
+  `pnpm install`, sinon piège d'installation.
+- Fichier isolé `backend/trad.ts` à la racine du back : à clarifier (traduction ?).
+- `synchronize` piloté par `DB_SYNCHRONIZE` (défaut `true`) : **rappel §7**, à
+  passer en migrations + `false` avant prod.
+
+### Ce qui est sain, à garder
+
+- Structure Nest modulaire correcte (`auth`, `user`, `vins`, `profile`).
+- Entité `Vin` + CRUD `/api/wine` réellement branchés sur la base.
+- Une doc d'API à jour et honnête (`backend/API_SPECIFICATIONS.md`).
