@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/organic-1ab96cad-3306-4ca8-9cba-59da9230f648/styles.css">
+<script src="_ds/organic-1ab96cad-3306-4ca8-9cba-59da9230f648/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{
+  --color-bg:#F1ECDE; --color-surface:#FAF7EF; --color-text:#2B2018;
+  --color-accent:#4A3324; --color-accent-2:#6D1E2C; --color-divider:#DCD3C0;
+  --font-heading:"Playfair Display",Georgia,serif;
+  --font-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --radius-md:12px; --radius-lg:18px; --rc-gold:#C08A2E;
+}
+body{margin:0;background:#E3DCCC;font-family:var(--font-body);color:var(--color-text)}
+a{color:var(--color-accent-2);text-decoration:none}
+a:hover{color:#4A3324}
+h1,h2,h3,h4,h5{letter-spacing:-0.01em}
+.dv-turn{padding:44px 48px 36px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#2B2018;color:#F1ECDE;border-radius:4px}
+.dv-tname{font:600 13px/1.2 var(--font-body);color:#2B2018}
+.dv-opts{display:flex;flex-wrap:nowrap;gap:44px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(43,32,24,.1);color:#2B2018;border-radius:5px}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 var(--font-body);color:rgba(43,32,24,.6)}
+.dv-card{background:var(--color-bg);border:1px solid rgba(43,32,24,.14);border-radius:6px;box-shadow:0 8px 28px rgba(43,32,24,.14);overflow:hidden}
+.dv-opt:target .dv-oid{background:#6D1E2C;color:#F1ECDE}
+.dv-next{margin:26px 0 0;font:12px/1.6 var(--font-body);color:rgba(43,32,24,.6)}
+</style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="rc-glass" viewBox="0 0 800 569"><g transform="translate(0,569) scale(0.1,-0.1)" fill="currentColor" stroke="none"><path d="M2150 5630 c-66 -131 -436 -944 -500 -1100 -123 -298 -186 -504 -231 -755 -21 -114 -24 -162 -24 -390 0 -239 2 -267 23 -352 62 -247 167 -431 342 -603 170 -166 442 -322 730 -417 183 -61 261 -81 475 -123 88 -17 168 -34 178 -36 16 -5 17 -29 17 -319 l0 -313 -36 -112 c-128 -391 -530 -721 -1039 -853 -141 -37 -200 -46 -365 -58 -167 -12 -216 -22 -230 -49 -5 -10 -10 -48 -10 -84 l0 -66 1973 2 1972 3 3 68 c2 42 -2 74 -9 83 -18 21 -71 31 -234 43 -182 14 -313 39 -465 91 -265 89 -478 213 -637 369 -132 129 -233 275 -289 419 l-34 85 0 317 c0 175 3 331 6 347 6 29 10 31 62 37 68 8 324 66 470 107 233 66 469 171 647 290 138 91 307 258 389 382 139 210 206 490 193 812 -17 413 -113 750 -390 1365 -95 212 -342 746 -374 810 l-28 55 -88 3 -87 3 -11 -28 c-26 -67 -8 -123 141 -448 449 -977 536 -1207 596 -1570 19 -119 14 -395 -10 -512 -41 -200 -179 -429 -347 -573 -260 -224 -585 -357 -1139 -466 -245 -48 -245 -48 -253 -115 -10 -84 -7 -755 3 -839 13 -101 61 -239 115 -335 125 -218 344 -434 577 -567 l83 -48 -860 0 -859 0 89 51 c122 70 197 124 288 209 185 173 308 358 372 560 24 75 28 110 36 300 9 201 4 614 -7 687 -7 46 -33 57 -230 93 -779 144 -1230 406 -1434 832 -53 111 -78 212 -91 377 -16 205 -1 338 67 598 76 290 175 536 469 1168 219 470 246 546 216 603 -11 20 -20 22 -101 22 l-90 0 -30 -60z"></path></g><g transform="translate(0,569) scale(0.1,-0.1)" fill="#6D1E2C" stroke="none"><path d="M2283 5075 c-68 -47 -309 -538 -412 -838 -49 -143 -103 -336 -132 -477 -19 -89 -23 -138 -23 -320 -1 -182 2 -224 17 -275 48 -155 182 -351 348 -509 249 -237 542 -370 926 -421 157 -21 469 -21 638 0 476 58 926 242 1216 497 161 142 265 276 320 414 71 176 77 333 19 506 -18 54 -38 102 -45 108 -10 8 -38 7 -102 -5 -269 -48 -360 -58 -543 -58 -254 0 -413 30 -572 108 -183 91 -313 213 -516 485 -258 347 -286 382 -361 462 -164 175 -197 200 -239 181z"></path></g></symbol></defs></svg>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><span class="dv-tid">2</span><span class="dv-tname">Page « Mon compte » — 3 points de rupture</span></div>
+<p style="max-width:780px;margin:0 0 26px;font-size:12.5px;line-height:1.7;color:rgba(43,32,24,.62)">Même charte que l'accueil : blanc cassé, bordeaux, brun, Playfair + Jakarta. Le header reprend exactement celui de l'accueil, avec l'avatar en état actif. Structure du wireframe respectée : identité (pseudo / inscrit depuis), bio + « Modifier le profil », tags préférés en pilules, « Derniers ajouts » en grille, puis Réglages / Déconnexion et le footer. <b>Les pilules de tags sont cliquables</b> — elles filtrent la grille en direct (essaie-les). Trois réglages sont exposés dans le panneau Tweaks : afficher les notes, ordre de tri, badge « À ouvrir ».</p>
+<div class="dv-opts">
+
+  <div class="dv-opt" id="2a">
+    <div class="dv-olabel"><span class="dv-oid">2a</span>Desktop — 1440 px · identité pleine largeur, grille 4 colonnes</div>
+    <div class="dv-card" style="width:1440px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;padding:0 48px;height:76px;background:rgba(241,236,222,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <nav style="display:flex;align-items:center;gap:28px;font-size:13.5px;font-weight:500">
+          <a href="#2a" style="color:rgba(43,32,24,.62)">Les caves</a>
+          <a href="#2a" style="color:rgba(43,32,24,.62)">Cépages</a>
+          <a href="#2a" style="color:rgba(43,32,24,.62)">Millésimes</a>
+        </nav>
+        <a href="#2a" style="display:flex;align-items:center;gap:10px;color:var(--color-accent)">
+          <svg style="width:26px;height:19px;color:var(--color-accent)"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:19px;letter-spacing:.02em;color:var(--color-text)">Rich Cellar</span>
+        </a>
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:14px">
+          <a href="#2a" style="font-size:13.5px;font-weight:500;color:rgba(43,32,24,.62)">Ma cave</a>
+          <a href="#2a" style="display:flex;align-items:center;gap:9px;padding:6px 14px 6px 7px;border:1px solid var(--color-accent-2);border-radius:999px;background:var(--color-surface)">
+            <span style="display:grid;place-items:center;width:28px;height:28px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:11px;font-weight:600;letter-spacing:.04em">CL</span>
+            <span style="font-size:13px;font-weight:600;color:var(--color-text)">Mon compte</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="padding:56px 48px 0">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px">
+          <div style="display:flex;align-items:center;gap:22px">
+            <span style="display:grid;place-items:center;width:78px;height:78px;flex:none;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-family:var(--font-heading);font-weight:600;font-size:28px;letter-spacing:.02em">CL</span>
+            <div>
+              <p style="margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mon compte</p>
+              <h1 style="margin:0;font-family:var(--font-heading);font-weight:700;font-size:46px;line-height:1.05">Camille Laroze</h1>
+            </div>
+          </div>
+          <div style="text-align:right;padding-top:6px">
+            <p style="margin:0 0 5px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(43,32,24,.45)">Inscrit depuis</p>
+            <p style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:19px">mars 2021</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:56px;margin-top:38px;padding-bottom:34px;border-bottom:1px solid var(--color-divider)">
+          <div style="max-width:620px">
+            <p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(43,32,24,.45)">Bio</p>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:rgba(43,32,24,.78)">Je bois surtout des rouges de Loire et des blancs de Bourgogne, et je note tout depuis un carnet papier tenu pendant neuf ans. Plutôt vins de soif que grands crus — mais je garde une faiblesse pour les Barsac.</p>
+          </div>
+          <a href="#2a" style="display:inline-flex;align-items:center;gap:9px;flex:none;padding:14px 26px;border-radius:999px;border:1px solid var(--color-accent);color:var(--color-accent);font-weight:600;font-size:14.5px" style-hover="background:var(--color-accent);color:#F1ECDE">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            Modifier le profil
+          </a>
+        </div>
+      </div>
+
+      <div style="padding:36px 48px 0">
+        <p style="margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mes tags préférés</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <sc-for list="{{ tagsA }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.onClick }}" style="padding:9px 20px;border-radius:999px;font-family:var(--font-body);font-weight:600;font-size:13.5px;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:44px 48px 72px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:22px">
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.1">Derniers ajouts</h2>
+          <div style="display:flex;align-items:baseline;gap:16px"><p style="margin:0;font-size:13px;color:rgba(43,32,24,.55)">{{ countA }}</p><a href="#2a" style="font-size:13.5px;font-weight:600;color:var(--color-accent)">Voir tout</a></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+          <sc-for list="{{ listA }}" as="b" hint-placeholder-count="4">
+            <a href="#2a" style="display:block;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--color-divider);overflow:hidden;color:var(--color-text)" style-hover="border-color:var(--color-accent-2)">
+              <div style="position:relative;height:208px">
+                <img src="{{ b.img }}" alt="{{ b.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+                <sc-if value="{{ b.toOpen }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:999px;background:rgba(241,236,222,.94);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2)">À ouvrir</span>
+                </sc-if>
+              </div>
+              <div style="padding:18px 18px 20px">
+                <p style="margin:0 0 6px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-2)">{{ b.appellation }}</p>
+                <p style="margin:0 0 6px;font-family:var(--font-heading);font-weight:600;font-size:18px;line-height:1.25">{{ b.name }}</p>
+                <p style="margin:0 0 14px;font-size:12.5px;color:rgba(43,32,24,.55)">{{ b.vintage }} · {{ b.grapes }}</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--color-divider)">
+                  <span style="font-size:11.5px;color:rgba(43,32,24,.5)">{{ b.added }}</span>
+                  <sc-if value="{{ b.showRating }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--color-text)">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="#8A5F16"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 6.8L12 17.8 5.8 21l1.2-6.8L2 9.4l7-.9Z"></path></svg>
+                      {{ b.rating }}
+                    </span>
+                  </sc-if>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:14px;margin-top:44px">
+          <a href="#2a" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-divider);color:var(--color-text);font-weight:600;font-size:14.5px" style-hover="border-color:var(--color-accent)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 13.6H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.7 7.5l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 10 3V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.5 1.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"></path></svg>
+            Réglages
+          </a>
+          <a href="#2a" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;border:1px solid rgba(109,30,44,.35);color:var(--color-accent-2);font-weight:600;font-size:14.5px" style-hover="background:var(--color-accent-2);color:#F1ECDE;border-color:var(--color-accent-2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path></svg>
+            Déconnexion
+          </a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding:64px 48px 40px;border-top:1px solid var(--color-divider)">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--color-accent)">
+            <svg style="width:24px;height:18px"><use href="#rc-glass"></use></svg>
+            <span style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--color-text)">Rich Cellar</span>
+          </div>
+          <p style="margin:0;max-width:280px;font-size:13px;line-height:1.6;color:rgba(43,32,24,.58)">La bibliothèque des vins que vous avez réellement goûtés.</p>
+        </div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Explorer</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#2a">Les caves</a><a href="#2a">Cépages</a><a href="#2a">Millésimes</a></div></div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Compte</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#2a">Mon profil</a><a href="#2a">Réglages</a><a href="#2a">Ma cave</a></div></div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Maison</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#2a">À propos</a><a href="#2a">Mentions légales</a><a href="#2a">Contact</a></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:18px 48px 28px;font-size:12px;color:rgba(43,32,24,.45)"><span>© 2026 Rich Cellar</span><span>L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</span></div>
+    </div>
+  </div>
+
+  <div class="dv-opt" id="2b">
+    <div class="dv-olabel"><span class="dv-oid">2b</span>Tablette — 834 px · grille 3 colonnes, bio sur toute la largeur</div>
+    <div class="dv-card" style="width:834px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:0 28px;height:68px;background:rgba(241,236,222,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <a href="#2b" style="justify-self:start;display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:var(--color-text)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>Les caves</a>
+        <a href="#2b" style="display:flex;align-items:center;gap:9px;color:var(--color-accent)">
+          <svg style="width:23px;height:17px"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--color-text)">Rich Cellar</span>
+        </a>
+        <a href="#2b" style="justify-self:end;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:1px solid var(--color-accent-2);border-radius:999px;background:var(--color-surface)">
+          <span style="display:grid;place-items:center;width:26px;height:26px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:10.5px;font-weight:600">CL</span>
+          <span style="font-size:12.5px;font-weight:600;color:var(--color-text)">Mon compte</span>
+        </a>
+      </div>
+
+      <div style="padding:42px 28px 0">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:28px">
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="display:grid;place-items:center;width:64px;height:64px;flex:none;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-family:var(--font-heading);font-weight:600;font-size:23px">CL</span>
+            <div>
+              <p style="margin:0 0 7px;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mon compte</p>
+              <h1 style="margin:0;font-family:var(--font-heading);font-weight:700;font-size:34px;line-height:1.05">Camille Laroze</h1>
+            </div>
+          </div>
+          <div style="text-align:right;padding-top:4px">
+            <p style="margin:0 0 4px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(43,32,24,.45)">Inscrit depuis</p>
+            <p style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:16px">mars 2021</p>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding-bottom:26px;border-bottom:1px solid var(--color-divider)">
+          <p style="margin:0 0 9px;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(43,32,24,.45)">Bio</p>
+          <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:rgba(43,32,24,.78)">Je bois surtout des rouges de Loire et des blancs de Bourgogne, et je note tout depuis un carnet papier tenu pendant neuf ans. Plutôt vins de soif que grands crus — mais je garde une faiblesse pour les Barsac.</p>
+          <a href="#2b" style="display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:999px;border:1px solid var(--color-accent);color:var(--color-accent);font-weight:600;font-size:14px" style-hover="background:var(--color-accent);color:#F1ECDE">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            Modifier le profil
+          </a>
+        </div>
+      </div>
+
+      <div style="padding:28px 28px 0">
+        <p style="margin:0 0 14px;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mes tags préférés</p>
+        <div style="display:flex;flex-wrap:wrap;gap:9px">
+          <sc-for list="{{ tagsB }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.onClick }}" style="padding:8px 17px;border-radius:999px;font-family:var(--font-body);font-weight:600;font-size:13px;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:34px 28px 52px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:18px">
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:25px;line-height:1.1">Derniers ajouts</h2>
+          <div style="display:flex;align-items:baseline;gap:14px"><p style="margin:0;font-size:12.5px;color:rgba(43,32,24,.55)">{{ countB }}</p><a href="#2b" style="font-size:13px;font-weight:600;color:var(--color-accent)">Voir tout</a></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <sc-for list="{{ listB }}" as="b" hint-placeholder-count="3">
+            <a href="#2b" style="display:block;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-divider);overflow:hidden;color:var(--color-text)" style-hover="border-color:var(--color-accent-2)">
+              <div style="position:relative;height:160px">
+                <img src="{{ b.img }}" alt="{{ b.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+                <sc-if value="{{ b.toOpen }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;background:rgba(241,236,222,.94);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-2)">À ouvrir</span>
+                </sc-if>
+              </div>
+              <div style="padding:14px 14px 16px">
+                <p style="margin:0 0 5px;font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-2)">{{ b.appellation }}</p>
+                <p style="margin:0 0 5px;font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.25">{{ b.name }}</p>
+                <p style="margin:0 0 11px;font-size:11.5px;color:rgba(43,32,24,.55)">{{ b.vintage }} · {{ b.grapes }}</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--color-divider)">
+                  <span style="font-size:11px;color:rgba(43,32,24,.5)">{{ b.added }}</span>
+                  <sc-if value="{{ b.showRating }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:var(--color-text)">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#8A5F16"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 6.8L12 17.8 5.8 21l1.2-6.8L2 9.4l7-.9Z"></path></svg>
+                      {{ b.rating }}
+                    </span>
+                  </sc-if>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:34px">
+          <a href="#2b" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-divider);color:var(--color-text);font-weight:600;font-size:14px" style-hover="border-color:var(--color-accent)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 13.6H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.7 7.5l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 10 3V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.5 1.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"></path></svg>
+            Réglages
+          </a>
+          <a href="#2b" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;border:1px solid rgba(109,30,44,.35);color:var(--color-accent-2);font-weight:600;font-size:14px" style-hover="background:var(--color-accent-2);color:#F1ECDE;border-color:var(--color-accent-2)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path></svg>
+            Déconnexion
+          </a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px;padding:44px 28px 28px;border-top:1px solid var(--color-divider)">
+        <div>
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px;color:var(--color-accent)">
+            <svg style="width:22px;height:16px"><use href="#rc-glass"></use></svg>
+            <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--color-text)">Rich Cellar</span>
+          </div>
+          <p style="margin:0;font-size:12.5px;line-height:1.6;color:rgba(43,32,24,.58)">La bibliothèque des vins que vous avez réellement goûtés.</p>
+        </div>
+        <div><p style="margin:0 0 10px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Explorer</p><div style="display:grid;gap:8px;font-size:13px"><a href="#2b">Les caves</a><a href="#2b">Cépages</a><a href="#2b">Millésimes</a></div></div>
+        <div><p style="margin:0 0 10px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Compte</p><div style="display:grid;gap:8px;font-size:13px"><a href="#2b">Mon profil</a><a href="#2b">Réglages</a><a href="#2b">Ma cave</a></div></div>
+      </div>
+      <div style="padding:14px 28px 24px;font-size:11.5px;color:rgba(43,32,24,.45)">© 2026 Rich Cellar · L'abus d'alcool est dangereux pour la santé.</div>
+    </div>
+  </div>
+
+  <div class="dv-opt" id="2c">
+    <div class="dv-olabel"><span class="dv-oid">2c</span>Mobile — 390 px · tout en pile, grille 2 colonnes, actions pleine largeur</div>
+    <div class="dv-card" style="width:390px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:58px;padding:0 14px;background:rgba(241,236,222,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <a href="#2c" style="justify-self:start;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--color-text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>Les caves</a>
+        <a href="#2c" style="display:flex;align-items:center;color:var(--color-accent)"><svg style="width:26px;height:19px"><use href="#rc-glass"></use></svg></a>
+        <a href="#2c" style="justify-self:end;display:grid;place-items:center;width:32px;height:32px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:11px;font-weight:600;box-shadow:0 0 0 2px rgba(109,30,44,.28)">CL</a>
+      </div>
+
+      <div style="padding:28px 20px 0">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px">
+          <span style="display:grid;place-items:center;width:54px;height:54px;flex:none;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-family:var(--font-heading);font-weight:600;font-size:20px">CL</span>
+          <div style="text-align:right;padding-top:3px">
+            <p style="margin:0 0 3px;font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.45)">Inscrit depuis</p>
+            <p style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:14.5px">mars 2021</p>
+          </div>
+        </div>
+        <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mon compte</p>
+        <h1 style="margin:0 0 22px;font-family:var(--font-heading);font-weight:700;font-size:29px;line-height:1.08">Camille Laroze</h1>
+
+        <div style="padding-bottom:24px;border-bottom:1px solid var(--color-divider)">
+          <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(43,32,24,.45)">Bio</p>
+          <p style="margin:0 0 18px;font-size:14.5px;line-height:1.7;color:rgba(43,32,24,.78)">Je bois surtout des rouges de Loire et des blancs de Bourgogne, et je note tout depuis un carnet papier tenu pendant neuf ans. Plutôt vins de soif que grands crus.</p>
+          <a href="#2c" style="display:flex;align-items:center;justify-content:center;gap:9px;height:48px;border-radius:999px;border:1px solid var(--color-accent);color:var(--color-accent);font-weight:600;font-size:14.5px" style-hover="background:var(--color-accent);color:#F1ECDE">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            Modifier le profil
+          </a>
+        </div>
+      </div>
+
+      <div style="padding:24px 20px 0">
+        <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">Mes tags préférés</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ tagsC }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.onClick }}" style="padding:9px 16px;border-radius:999px;font-family:var(--font-body);font-weight:600;font-size:12.5px;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }}">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:28px 20px 40px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px">
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:22px;line-height:1.1">Derniers ajouts</h2>
+          <a href="#2c" style="display:flex;align-items:baseline;gap:8px;font-size:11.5px;color:rgba(43,32,24,.55)">{{ countC }}<span style="font-weight:600;color:var(--color-accent)">Voir tout</span></a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+          <sc-for list="{{ listC }}" as="b" hint-placeholder-count="4">
+            <a href="#2c" style="display:block;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--color-divider);overflow:hidden;color:var(--color-text)">
+              <div style="position:relative;height:126px">
+                <img src="{{ b.img }}" alt="{{ b.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+                <sc-if value="{{ b.toOpen }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;background:rgba(241,236,222,.94);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-2)">À ouvrir</span>
+                </sc-if>
+              </div>
+              <div style="padding:12px 12px 14px">
+                <p style="margin:0 0 4px;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-2)">{{ b.appellation }}</p>
+                <p style="margin:0 0 4px;font-family:var(--font-heading);font-weight:600;font-size:14.5px;line-height:1.25">{{ b.name }}</p>
+                <p style="margin:0 0 9px;font-size:11px;color:rgba(43,32,24,.55)">{{ b.vintage }}</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;padding-top:9px;border-top:1px solid var(--color-divider)">
+                  <span style="font-size:10.5px;color:rgba(43,32,24,.5)">{{ b.added }}</span>
+                  <sc-if value="{{ b.showRating }}" hint-placeholder-val="{{ true }}">
+                    <span style="display:flex;align-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--color-text)">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="#8A5F16"><path d="m12 2 3 6.5 7 .9-5 4.8 1.2 6.8L12 17.8 5.8 21l1.2-6.8L2 9.4l7-.9Z"></path></svg>
+                      {{ b.rating }}
+                    </span>
+                  </sc-if>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;gap:12px;margin-top:30px">
+          <a href="#2c" style="display:flex;align-items:center;justify-content:center;gap:9px;height:50px;border-radius:999px;background:var(--color-surface);border:1px solid var(--color-divider);color:var(--color-text);font-weight:600;font-size:15px" style-hover="border-color:var(--color-accent)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 13.6H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.7 7.5l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 10 3V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.5 1.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"></path></svg>
+            Réglages
+          </a>
+          <a href="#2c" style="display:flex;align-items:center;justify-content:center;gap:9px;height:50px;border-radius:999px;border:1px solid rgba(109,30,44,.35);color:var(--color-accent-2);font-weight:600;font-size:15px" style-hover="background:var(--color-accent-2);color:#F1ECDE;border-color:var(--color-accent-2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path></svg>
+            Déconnexion
+          </a>
+        </div>
+      </div>
+
+      <div style="padding:32px 20px 24px;border-top:1px solid var(--color-divider)">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--color-accent)">
+          <svg style="width:22px;height:16px"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--color-text)">Rich Cellar</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;font-size:13.5px;margin-bottom:20px">
+          <a href="#2c">Les caves</a><a href="#2c">Cépages</a><a href="#2c">Ma cave</a><a href="#2c">Réglages</a><a href="#2c">À propos</a><a href="#2c">Contact</a>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.5;color:rgba(43,32,24,.45)">© 2026 Rich Cellar · L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<p class="dv-next">Essaie ensuite : « ajoute l'écran Réglages » · « fais la page Ma Cave » · « une variante avec photo de couverture derrière le pseudo » · « version compte vide, sans bouteille »</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRatings&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Derniers ajouts&quot;},&quot;sortBy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Derniers ajouts&quot;,&quot;Millésime&quot;,&quot;Note&quot;],&quot;default&quot;:&quot;Derniers ajouts&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Derniers ajouts&quot;},&quot;highlightToOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Derniers ajouts&quot;}}">
+const IMGS = [
+  "https://pixabay.com/get/gd45bf1cadbc310bfee1766f18edcd54a3bac5bc331bdf7fb42ae776587c52e75286e2f70439ff20b70703364e8679489_1920.jpg?longlived=",
+  "https://pixabay.com/get/ge1036a0a7dce807c1b5566478938666596bfb19f123d69d50051db433f186681e6f1301e8e14a1e70f52e3e438d91f3f_1920.jpg?longlived=",
+  "assets/hero-cave.jpeg"
+];
+
+const BOTTLES = [
+  { name: "Château Fonroque", appellation: "Saint-Émilion", vintage: 2018, grapes: "Merlot", rating: "4,5", added: "il y a 2 j", tags: ["Bordeaux", "Vin nature"], toOpen: false },
+  { name: "Clos Rougeard", appellation: "Saumur-Champigny", vintage: 2016, grapes: "Cabernet franc", rating: "5,0", added: "il y a 5 j", tags: ["Vin nature", "Coup de cœur"], toOpen: false },
+  { name: "Domaine Roulot", appellation: "Meursault", vintage: 2019, grapes: "Chardonnay", rating: "4,0", added: "il y a 9 j", tags: ["Bourgogne"], toOpen: true },
+  { name: "Doisy-Daëne", appellation: "Barsac", vintage: 2015, grapes: "Sémillon", rating: "3,5", added: "12 août", tags: ["Bordeaux"], toOpen: false },
+  { name: "Terres Dorées", appellation: "Beaujolais", vintage: 2022, grapes: "Gamay", rating: "4,0", added: "4 août", tags: ["Vin nature"], toOpen: true },
+  { name: "Domaine Tempier", appellation: "Bandol", vintage: 2017, grapes: "Mourvèdre", rating: "4,5", added: "28 juil.", tags: ["Coup de cœur"], toOpen: false },
+  { name: "Dauvissat Séchet", appellation: "Chablis 1er cru", vintage: 2020, grapes: "Chardonnay", rating: "4,0", added: "21 juil.", tags: ["Bourgogne"], toOpen: true },
+  { name: "Pichon Comtesse", appellation: "Pauillac", vintage: 2014, grapes: "Cabernet sauvignon", rating: "4,5", added: "9 juil.", tags: ["Bordeaux", "Coup de cœur"], toOpen: false }
+];
+
+const TAGS = ["Tous", "Bordeaux", "Bourgogne", "Vin nature", "Coup de cœur"];
+
+class Component extends DCLogic {
+  state = { sel: { a: "Tous", b: "Tous", c: "Tous" } };
+
+  pick(key, label) {
+    this.setState(s => ({ sel: Object.assign({}, s.sel, { [key]: label }) }));
+  }
+
+  tagsFor(key) {
+    const cur = this.state.sel[key];
+    return TAGS.map(label => {
+      const on = label === cur;
+      return {
+        label,
+        bg: on ? "#6D1E2C" : "#FAF7EF",
+        fg: on ? "#F1ECDE" : "rgba(43,32,24,.72)",
+        bd: on ? "#6D1E2C" : "#DCD3C0",
+        onClick: () => this.pick(key, label)
+      };
+    });
+  }
+
+  listFor(key, max) {
+    const cur = this.state.sel[key];
+    const sortBy = this.props.sortBy ?? "Derniers ajouts";
+    const showRating = this.props.showRatings ?? true;
+    const highlight = this.props.highlightToOpen ?? true;
+    let rows = BOTTLES.map((b, i) => Object.assign({}, b, { _i: i }));
+    if (cur !== "Tous") rows = rows.filter(b => b.tags.indexOf(cur) !== -1);
+    if (sortBy === "Millésime") rows.sort((x, y) => y.vintage - x.vintage);
+    else if (sortBy === "Note") rows.sort((x, y) => parseFloat(y.rating.replace(",", ".")) - parseFloat(x.rating.replace(",", ".")));
+    return rows.slice(0, max).map(b => Object.assign({}, b, {
+      img: IMGS[b._i % IMGS.length],
+      showRating,
+      toOpen: highlight && b.toOpen
+    }));
+  }
+
+  countFor(key, shown) {
+    const cur = this.state.sel[key];
+    const total = cur === "Tous" ? BOTTLES.length : BOTTLES.filter(b => b.tags.indexOf(cur) !== -1).length;
+    const n = Math.min(shown, total);
+    return cur === "Tous"
+      ? n + " sur 312 en cave"
+      : n + " sur " + total + " · « " + cur + " »";
+  }
+
+  renderVals() {
+    return {
+      tagsA: this.tagsFor("a"), tagsB: this.tagsFor("b"), tagsC: this.tagsFor("c"),
+      listA: this.listFor("a", 4), listB: this.listFor("b", 3), listC: this.listFor("c", 4),
+      countA: this.countFor("a", 4), countB: this.countFor("b", 3), countC: this.countFor("c", 4)
+    };
+  }
+}
+
+</script>
+</body>
+</html>
