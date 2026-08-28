@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/organic-1ab96cad-3306-4ca8-9cba-59da9230f648/styles.css">
+<script src="_ds/organic-1ab96cad-3306-4ca8-9cba-59da9230f648/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{
+  --color-bg:#F1ECDE; --color-surface:#FAF7EF; --color-text:#2B2018;
+  --color-accent:#4A3324; --color-accent-2:#6D1E2C; --color-divider:#DCD3C0;
+  --font-heading:"Playfair Display",Georgia,serif; --font-heading-weight:600;
+  --font-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --radius-md:12px; --radius-lg:18px;
+  --rc-olive:#6B8F5A; --rc-terra:#B23A2E; --rc-gold:#C08A2E;
+}
+body{margin:0;background:#E3DCCC;font-family:var(--font-body);color:var(--color-text)}
+a{color:var(--color-accent-2);text-decoration:none}
+a:hover{color:#4A3324}
+h1,h2,h3,h4,h5{letter-spacing:-0.01em}
+.dv-turn{padding:44px 48px 36px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#2B2018;color:#F1ECDE;border-radius:4px}
+.dv-tname{font:600 13px/1.2 var(--font-body);color:#2B2018}
+.dv-opts{display:flex;flex-wrap:nowrap;gap:44px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(43,32,24,.1);color:#2B2018;border-radius:5px}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 var(--font-body);color:rgba(43,32,24,.6)}
+.dv-card{background:var(--color-bg);border:1px solid rgba(43,32,24,.14);border-radius:6px;box-shadow:0 8px 28px rgba(43,32,24,.14);overflow:hidden}
+.dv-opt:target .dv-oid{background:#6D1E2C;color:#F1ECDE}
+.dv-next{margin:26px 0 0;font:12px/1.6 var(--font-body);color:rgba(43,32,24,.6)}
+</style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="rc-glass" viewBox="0 0 800 569"><g transform="translate(0,569) scale(0.1,-0.1)" fill="currentColor" stroke="none"><path d="M2150 5630 c-66 -131 -436 -944 -500 -1100 -123 -298 -186 -504 -231 -755 -21 -114 -24 -162 -24 -390 0 -239 2 -267 23 -352 62 -247 167 -431 342 -603 170 -166 442 -322 730 -417 183 -61 261 -81 475 -123 88 -17 168 -34 178 -36 16 -5 17 -29 17 -319 l0 -313 -36 -112 c-128 -391 -530 -721 -1039 -853 -141 -37 -200 -46 -365 -58 -167 -12 -216 -22 -230 -49 -5 -10 -10 -48 -10 -84 l0 -66 1973 2 1972 3 3 68 c2 42 -2 74 -9 83 -18 21 -71 31 -234 43 -182 14 -313 39 -465 91 -265 89 -478 213 -637 369 -132 129 -233 275 -289 419 l-34 85 0 317 c0 175 3 331 6 347 6 29 10 31 62 37 68 8 324 66 470 107 233 66 469 171 647 290 138 91 307 258 389 382 139 210 206 490 193 812 -17 413 -113 750 -390 1365 -95 212 -342 746 -374 810 l-28 55 -88 3 -87 3 -11 -28 c-26 -67 -8 -123 141 -448 449 -977 536 -1207 596 -1570 19 -119 14 -395 -10 -512 -41 -200 -179 -429 -347 -573 -260 -224 -585 -357 -1139 -466 -245 -48 -245 -48 -253 -115 -10 -84 -7 -755 3 -839 13 -101 61 -239 115 -335 125 -218 344 -434 577 -567 l83 -48 -860 0 -859 0 89 51 c122 70 197 124 288 209 185 173 308 358 372 560 24 75 28 110 36 300 9 201 4 614 -7 687 -7 46 -33 57 -230 93 -779 144 -1230 406 -1434 832 -53 111 -78 212 -91 377 -16 205 -1 338 67 598 76 290 175 536 469 1168 219 470 246 546 216 603 -11 20 -20 22 -101 22 l-90 0 -30 -60z"></path></g><g transform="translate(0,569) scale(0.1,-0.1)" fill="#6D1E2C" stroke="none"><path d="M2283 5075 c-68 -47 -309 -538 -412 -838 -49 -143 -103 -336 -132 -477 -19 -89 -23 -138 -23 -320 -1 -182 2 -224 17 -275 48 -155 182 -351 348 -509 249 -237 542 -370 926 -421 157 -21 469 -21 638 0 476 58 926 242 1216 497 161 142 265 276 320 414 71 176 77 333 19 506 -18 54 -38 102 -45 108 -10 8 -38 7 -102 -5 -269 -48 -360 -58 -543 -58 -254 0 -413 30 -572 108 -183 91 -313 213 -516 485 -258 347 -286 382 -361 462 -164 175 -324 263 -576 318 -112 24 -173 25 -202 5z"></path></g></symbol></defs></svg>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><span class="dv-tid">1</span><span class="dv-tname">Page d'accueil Rich Cellar — 3 points de rupture</span></div>
+<p style="max-width:760px;margin:0 0 26px;font-size:12.5px;line-height:1.7;color:rgba(43,32,24,.62)">Charte appliquée telle quelle : blanc cassé <b>#F1ECDE</b> en fond, bordeaux <b>#6D1E2C</b> pour la section secondaire, brun <b>#4A3324</b> pour les CTA et liens. Playfair 600/700 sur les titres, Jakarta 400/500/600 sur le reste. Signature retenue : <b>la cave en fondu</b> — une photo de cave qui s'efface progressivement dans le blanc cassé, sans filet ni cadre, puis une alternance de sections crème et bordeaux plein-cadre. Ton sommelier : vocabulaire de dégustation, phrases courtes, pas de familiarité. Les photos sont des visuels Pixabay libres de droits, posés pour le cadrage — à remplacer par tes propres prises de vue.</p>
+<div class="dv-opts">
+
+  <div class="dv-opt" id="1a">
+    <div class="dv-olabel"><span class="dv-oid">1a</span>Desktop — 1440 px · header sticky, hero centré, deux sections alternées</div>
+    <div class="dv-card" style="width:1440px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;padding:0 48px;height:76px;background:rgba(241,236,222,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <nav style="display:flex;align-items:center;gap:28px;font-size:13.5px;font-weight:500">
+          <a href="#1a" style="color:var(--color-text)">Les caves</a>
+          <a href="#1a" style="color:rgba(43,32,24,.62)">Cépages</a>
+          <a href="#1a" style="color:rgba(43,32,24,.62)">Millésimes</a>
+        </nav>
+        <a href="#1a" style="display:flex;align-items:center;gap:10px;color:var(--color-accent)">
+          <svg style="width:26px;height:19px;color:var(--color-accent)"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:19px;letter-spacing:.02em;color:var(--color-text)">Rich Cellar</span>
+        </a>
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:14px">
+          <a href="#1a" style="font-size:13.5px;font-weight:500;color:rgba(43,32,24,.62)">Connexion</a>
+          <a href="#1a" style="display:flex;align-items:center;gap:9px;padding:6px 14px 6px 7px;border:1px solid var(--color-divider);border-radius:999px;background:var(--color-surface)">
+            <span style="display:grid;place-items:center;width:28px;height:28px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:11px;font-weight:600;letter-spacing:.04em">CL</span>
+            <span style="font-size:13px;font-weight:500;color:var(--color-text)">Mon compte</span>
+          </a>
+        </div>
+      </div>
+
+<div style="position:relative;padding:96px 48px 210px;text-align:center;overflow:hidden;background:var(--color-bg)">
+        <div style="position:absolute;inset:0;background-image:url(assets/hero-cave.jpeg);background-size:cover;background-position:center 38%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,11,.7) 0%,rgba(26,16,11,.58) 42%,rgba(26,16,11,.48) 62%,rgba(26,16,11,.22) 76%,rgba(26,16,11,.04) 85%,rgba(26,16,11,0) 90%);pointer-events:none"></div>
+        
+        <div style="position:relative;max-width:860px;margin:0 auto">
+          <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E4C9A0">Carnet de dégustation</p>
+          <h1 style="margin:0 0 24px;font-family:var(--font-heading);font-weight:700;font-size:64px;line-height:1.1;color:#FAF7EF;text-shadow:0 2px 24px rgba(20,12,8,.55);text-wrap:balance">Chaque bouteille goûtée<br>trouve sa place en cave.</h1>
+          <p style="margin:0 auto 38px;max-width:600px;font-size:17px;line-height:1.6;color:rgba(250,247,239,.88);text-shadow:0 1px 12px rgba(20,12,8,.5)">Scannez le code-barres, la fiche se remplit : appellation, cépages, millésime. Vous n'écrivez que ce qui compte — la robe, le nez, la finale.</p>
+          <div style="display:flex;justify-content:center;align-items:center;gap:16px">
+            <a href="#1a" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-family:var(--font-body);font-weight:600;font-size:15px;box-shadow:0 8px 26px rgba(20,12,8,.35)" style-hover="background:#FFFFFF">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M12 8v8M17 8v8"></path></svg>
+              {{ ctaLabel }}
+            </a>
+            <a href="#1a" style="display:inline-flex;align-items:center;gap:8px;padding:15px 22px;border-radius:999px;border:1px solid rgba(241,236,222,.55);font-weight:600;font-size:15px;color:#F1ECDE" style-hover="background:rgba(241,236,222,.14)">Parcourir les caves</a>
+          </div>
+          <p style="margin:30px 0 0;font-size:12.5px;color:rgba(250,247,239,.92);text-shadow:0 1px 10px rgba(20,12,8,.6)">1 842 étiquettes déjà consignées · aucune saisie manuelle</p>
+        </div>
+      </div>
+
+      <div style="padding:0 48px 84px">
+        <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:0 4px">
+          <div>
+            <p style="margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">01 — Le geste</p>
+            <h2 style="margin:0 0 18px;font-family:var(--font-heading);font-weight:600;font-size:40px;line-height:1.15">Du code-barres à la fiche de dégustation</h2>
+            <p style="margin:0 0 20px;font-size:15.5px;line-height:1.65;color:rgba(43,32,24,.74)">Un cadrage sur l'étiquette suffit. Domaine, appellation, assemblage et millésime sont reconnus, puis versés dans votre cave. Le reste vous appartient : note sur cinq, température de service, accord retenu.</p>
+            <ul style="display:grid;gap:12px;margin:0 0 26px;padding:0;list-style:none;font-size:14px;color:rgba(43,32,24,.78)">
+              <li style="display:flex;gap:11px;align-items:flex-start"><span style="margin-top:6px;width:6px;height:6px;flex:none;border-radius:999px;background:var(--color-accent-2)"></span>Fiche pré-remplie en moins de deux secondes</li>
+              <li style="display:flex;gap:11px;align-items:flex-start"><span style="margin-top:6px;width:6px;height:6px;flex:none;border-radius:999px;background:var(--color-accent-2)"></span>Vocabulaire de dégustation guidé, jamais imposé</li>
+              <li style="display:flex;gap:11px;align-items:flex-start"><span style="margin-top:6px;width:6px;height:6px;flex:none;border-radius:999px;background:var(--color-accent-2)"></span>Bouteille inconnue ? Vous complétez, elle enrichit la base</li>
+            </ul>
+            <a href="#1a" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--color-accent)">Voir une fiche complète
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+          <div style="position:relative;height:420px">
+            <img src="https://pixabay.com/get/gd45bf1cadbc310bfee1766f18edcd54a3bac5bc331bdf7fb42ae776587c52e75286e2f70439ff20b70703364e8679489_1920.jpg?longlived=" alt="Service d'un vin rouge dans un verre de dégustation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;display:block">
+            <div style="position:absolute;left:-18px;bottom:26px;display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:var(--color-bg);box-shadow:0 6px 18px rgba(43,32,24,.16);pointer-events:none">
+              <span style="font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-2)">Ajouté à la cave</span>
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:16px">Saint-Émilion 2018</span>
+              <span style="font-size:11.5px;color:rgba(43,32,24,.55)">Merlot 80 % · Cabernet franc 20 %</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--color-accent-2);color:#F1ECDE;padding:80px 48px">
+        <div style="display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center">
+          <div style="position:relative;height:400px">
+            <img src="https://pixabay.com/get/ge1036a0a7dce807c1b5566478938666596bfb19f123d69d50051db433f186681e6f1301e8e14a1e70f52e3e438d91f3f_1920.jpg?longlived=" alt="Casier de bouteilles rangées en cave" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;display:block">
+          </div>
+          <div>
+            <p style="margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,222,.7)">02 — La mémoire</p>
+            <h2 style="margin:0 0 18px;font-family:var(--font-heading);font-weight:600;font-size:40px;line-height:1.15;color:#F1ECDE">Votre cave se souvient mieux que vous</h2>
+            <p style="margin:0 0 30px;font-size:15.5px;line-height:1.65;color:rgba(241,236,222,.82)">Filtrez par cépage, région ou millésime. Retrouvez le vin d'un dîner de novembre, comparez deux verticales du même domaine, et gardez trace des bouteilles bues comme de celles à ouvrir.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px">
+              <div style="padding:18px;border:1px solid rgba(241,236,222,.24);border-radius:var(--radius-md)"><p style="margin:0 0 4px;font-family:var(--font-heading);font-size:28px;color:#F1ECDE">312</p><p style="margin:0;font-size:12px;color:rgba(241,236,222,.7)">bouteilles suivies</p></div>
+              <div style="padding:18px;border:1px solid rgba(241,236,222,.24);border-radius:var(--radius-md)"><p style="margin:0 0 4px;font-family:var(--font-heading);font-size:28px;color:#F1ECDE">47</p><p style="margin:0;font-size:12px;color:rgba(241,236,222,.7)">appellations</p></div>
+              <div style="padding:18px;border:1px solid rgba(241,236,222,.24);border-radius:var(--radius-md)"><p style="margin:0 0 4px;font-family:var(--font-heading);font-size:28px;color:#F1ECDE">9</p><p style="margin:0;font-size:12px;color:rgba(241,236,222,.7)">ans de notes</p></div>
+            </div>
+            <a href="#1a" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-weight:600;font-size:15px" style-hover="background:#FAF7EF">Créer ma cave</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding:64px 48px 40px;border-top:1px solid var(--color-divider)">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--color-accent)">
+            <svg style="width:24px;height:18px"><use href="#rc-glass"></use></svg>
+            <span style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--color-text)">Rich Cellar</span>
+          </div>
+          <p style="margin:0;max-width:280px;font-size:13px;line-height:1.6;color:rgba(43,32,24,.58)">La bibliothèque des vins que vous avez réellement goûtés.</p>
+        </div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Explorer</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#1a">Les caves</a><a href="#1a">Cépages</a><a href="#1a">Millésimes</a></div></div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Compte</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#1a">Connexion</a><a href="#1a">Créer un compte</a><a href="#1a">Ma cave</a></div></div>
+        <div><p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Maison</p><div style="display:grid;gap:9px;font-size:13.5px"><a href="#1a">À propos</a><a href="#1a">Mentions légales</a><a href="#1a">Contact</a></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:18px 48px 28px;font-size:12px;color:rgba(43,32,24,.45)"><span>© 2026 Rich Cellar</span><span>L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</span></div>
+    </div>
+  </div>
+
+  <div class="dv-opt" id="1b">
+    <div class="dv-olabel"><span class="dv-oid">1b</span>Tablette — 834 px · sections en deux colonnes resserrées</div>
+    <div class="dv-card" style="width:834px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:0 28px;height:68px;background:rgba(241,236,222,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <a href="#1b" style="justify-self:start;font-size:13.5px;font-weight:500;color:var(--color-text)">Les caves</a>
+        <a href="#1b" style="display:flex;align-items:center;gap:9px;color:var(--color-accent)">
+          <svg style="width:23px;height:17px"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--color-text)">Rich Cellar</span>
+        </a>
+        <a href="#1b" style="justify-self:end;display:flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:1px solid var(--color-divider);border-radius:999px;background:var(--color-surface)">
+          <span style="display:grid;place-items:center;width:26px;height:26px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:10.5px;font-weight:600">CL</span>
+          <span style="font-size:12.5px;font-weight:500;color:var(--color-text)">User</span>
+        </a>
+      </div>
+
+<div style="position:relative;padding:72px 40px 172px;text-align:center;overflow:hidden;background:var(--color-bg)">
+        <div style="position:absolute;inset:0;background-image:url(assets/hero-cave.jpeg);background-size:cover;background-position:center 38%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,11,.7) 0%,rgba(26,16,11,.58) 42%,rgba(26,16,11,.48) 62%,rgba(26,16,11,.22) 76%,rgba(26,16,11,.04) 85%,rgba(26,16,11,0) 90%);pointer-events:none"></div>
+        
+        <div style="position:relative">
+          <p style="margin:0 0 18px;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E4C9A0">Carnet de dégustation</p>
+          <h1 style="margin:0 0 20px;font-family:var(--font-heading);font-weight:700;font-size:46px;line-height:1.12;color:#FAF7EF;text-shadow:0 2px 22px rgba(20,12,8,.55);text-wrap:balance">Chaque bouteille goûtée trouve sa place en cave.</h1>
+          <p style="margin:0 auto 32px;max-width:520px;font-size:16px;line-height:1.6;color:rgba(250,247,239,.88);text-shadow:0 1px 12px rgba(20,12,8,.5)">Scannez le code-barres, la fiche se remplit : appellation, cépages, millésime. Vous n'écrivez que ce qui compte.</p>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+            <a href="#1b" style="display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-weight:600;font-size:15px;box-shadow:0 8px 26px rgba(20,12,8,.35)" style-hover="background:#FFFFFF">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M12 8v8M17 8v8"></path></svg>
+              {{ ctaLabel }}
+            </a>
+            <a href="#1b" style="font-weight:600;font-size:14px;color:#F1ECDE;text-shadow:0 1px 10px rgba(20,12,8,.6)" style-hover="color:#E4C9A0">Parcourir les caves</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:0 28px 56px">
+        <div style="display:grid;grid-template-columns:1fr .8fr;gap:32px;align-items:center;padding:0 2px">
+          <div>
+            <p style="margin:0 0 14px;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">01 — Le geste</p>
+            <h2 style="margin:0 0 14px;font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1.15">Du code-barres à la fiche de dégustation</h2>
+            <p style="margin:0 0 18px;font-size:14.5px;line-height:1.65;color:rgba(43,32,24,.74)">Domaine, appellation, assemblage et millésime sont reconnus puis versés dans votre cave. Le reste vous appartient : note sur cinq, température de service, accord retenu.</p>
+            <a href="#1b" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--color-accent)">Voir une fiche complète
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+          <div style="position:relative;height:300px">
+            <img src="https://pixabay.com/get/gd45bf1cadbc310bfee1766f18edcd54a3bac5bc331bdf7fb42ae776587c52e75286e2f70439ff20b70703364e8679489_1920.jpg?longlived=" alt="Service d'un vin rouge dans un verre de dégustation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;display:block">
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--color-accent-2);color:#F1ECDE;padding:52px 28px">
+        <div style="display:grid;grid-template-columns:.8fr 1fr;gap:32px;align-items:center">
+          <div style="position:relative;height:280px">
+            <img src="https://pixabay.com/get/ge1036a0a7dce807c1b5566478938666596bfb19f123d69d50051db433f186681e6f1301e8e14a1e70f52e3e438d91f3f_1920.jpg?longlived=" alt="Casier de bouteilles rangées en cave" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;display:block">
+          </div>
+          <div>
+            <p style="margin:0 0 14px;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,222,.7)">02 — La mémoire</p>
+            <h2 style="margin:0 0 14px;font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1.15;color:#F1ECDE">Votre cave se souvient mieux que vous</h2>
+            <p style="margin:0 0 22px;font-size:14.5px;line-height:1.65;color:rgba(241,236,222,.82)">Filtrez par cépage, région ou millésime. Bouteilles bues et bouteilles à ouvrir, au même endroit.</p>
+            <a href="#1b" style="display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-weight:600;font-size:14.5px">Créer ma cave</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px;padding:44px 28px 28px;border-top:1px solid var(--color-divider)">
+        <div>
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px;color:var(--color-accent)">
+            <svg style="width:22px;height:16px"><use href="#rc-glass"></use></svg>
+            <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--color-text)">Rich Cellar</span>
+          </div>
+          <p style="margin:0;font-size:12.5px;line-height:1.6;color:rgba(43,32,24,.58)">La bibliothèque des vins que vous avez réellement goûtés.</p>
+        </div>
+        <div><p style="margin:0 0 10px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Explorer</p><div style="display:grid;gap:8px;font-size:13px"><a href="#1b">Les caves</a><a href="#1b">Cépages</a><a href="#1b">Millésimes</a></div></div>
+        <div><p style="margin:0 0 10px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,32,24,.5)">Compte</p><div style="display:grid;gap:8px;font-size:13px"><a href="#1b">Connexion</a><a href="#1b">Créer un compte</a><a href="#1b">Ma cave</a></div></div>
+      </div>
+      <div style="padding:14px 28px 24px;font-size:11.5px;color:rgba(43,32,24,.45)">© 2026 Rich Cellar · L'abus d'alcool est dangereux pour la santé.</div>
+    </div>
+  </div>
+
+  <div class="dv-opt" id="1c">
+    <div class="dv-olabel"><span class="dv-oid">1c</span>Mobile — 390 px · header sticky à trois zones, tout en pile</div>
+    <div class="dv-card" style="width:390px">
+
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:58px;padding:0 14px;background:rgba(241,236,222,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+        <a href="#1c" style="justify-self:start;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--color-text)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>Les caves</a>
+        <a href="#1c" style="display:flex;align-items:center;color:var(--color-accent)"><svg style="width:26px;height:19px"><use href="#rc-glass"></use></svg></a>
+        <a href="#1c" style="justify-self:end;display:grid;place-items:center;width:32px;height:32px;border-radius:999px;background:var(--color-accent-2);color:#F1ECDE;font-size:11px;font-weight:600">CL</a>
+      </div>
+
+<div style="position:relative;padding:48px 20px 136px;text-align:center;overflow:hidden;background:var(--color-bg)">
+        <div style="position:absolute;inset:0;background-image:url(assets/hero-cave.jpeg);background-size:cover;background-position:center 38%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);mask-image:linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.04) 86%,rgba(0,0,0,0) 90%);pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,16,11,.7) 0%,rgba(26,16,11,.58) 42%,rgba(26,16,11,.48) 62%,rgba(26,16,11,.22) 76%,rgba(26,16,11,.04) 85%,rgba(26,16,11,0) 90%);pointer-events:none"></div>
+        
+        <div style="position:relative">
+          <p style="margin:0 0 14px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E4C9A0">Carnet de dégustation</p>
+          <h1 style="margin:0 0 16px;font-family:var(--font-heading);font-weight:700;font-size:34px;line-height:1.12;color:#FAF7EF;text-shadow:0 2px 20px rgba(20,12,8,.55);text-wrap:balance">Chaque bouteille goûtée trouve sa place.</h1>
+          <p style="margin:0 0 28px;font-size:15px;line-height:1.6;color:rgba(250,247,239,.88);text-shadow:0 1px 12px rgba(20,12,8,.5)">Scannez le code-barres : appellation, cépages et millésime se remplissent seuls.</p>
+          <a href="#1c" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-weight:600;font-size:15.5px;box-shadow:0 8px 24px rgba(20,12,8,.35)" style-hover="background:#FFFFFF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M12 8v8M17 8v8"></path></svg>
+            {{ ctaLabel }}
+          </a>
+          <a href="#1c" style="display:block;margin-top:14px;font-weight:600;font-size:14px;color:#F1ECDE;text-shadow:0 1px 10px rgba(20,12,8,.6)" style-hover="color:#E4C9A0">Parcourir les caves</a>
+        </div>
+      </div>
+
+      <div style="padding:0 16px 36px">
+        <div style="padding:0 2px">
+          <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-2)">01 — Le geste</p>
+          <h2 style="margin:0 0 12px;font-family:var(--font-heading);font-weight:600;font-size:25px;line-height:1.15">Du code-barres à la fiche</h2>
+          <p style="margin:0 0 18px;font-size:14.5px;line-height:1.65;color:rgba(43,32,24,.74)">Domaine, appellation et assemblage reconnus, versés dans votre cave. Vous n'ajoutez que la note et l'accord.</p>
+          <div style="position:relative;height:200px;margin-bottom:16px">
+            <img src="https://pixabay.com/get/gd45bf1cadbc310bfee1766f18edcd54a3bac5bc331bdf7fb42ae776587c52e75286e2f70439ff20b70703364e8679489_1920.jpg?longlived=" alt="Service d'un vin rouge dans un verre de dégustation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;display:block">
+          </div>
+          <a href="#1c" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--color-accent)">Voir une fiche complète
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div style="background:var(--color-accent-2);color:#F1ECDE;padding:36px 20px">
+        <div style="position:relative;height:180px;margin-bottom:22px">
+          <img src="https://pixabay.com/get/ge1036a0a7dce807c1b5566478938666596bfb19f123d69d50051db433f186681e6f1301e8e14a1e70f52e3e438d91f3f_1920.jpg?longlived=" alt="Casier de bouteilles rangées en cave" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;display:block">
+        </div>
+        <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,222,.7)">02 — La mémoire</p>
+        <h2 style="margin:0 0 12px;font-family:var(--font-heading);font-weight:600;font-size:25px;line-height:1.15;color:#F1ECDE">Votre cave se souvient mieux que vous</h2>
+        <p style="margin:0 0 22px;font-size:14.5px;line-height:1.65;color:rgba(241,236,222,.82)">Filtrez par cépage, région ou millésime. Bouteilles bues et bouteilles à ouvrir, au même endroit.</p>
+        <a href="#1c" style="display:flex;align-items:center;justify-content:center;height:50px;border-radius:999px;background:#F1ECDE;color:var(--color-accent);font-weight:600;font-size:15px">Créer ma cave</a>
+      </div>
+
+      <div style="padding:32px 20px 24px;border-top:1px solid var(--color-divider)">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--color-accent)">
+          <svg style="width:22px;height:16px"><use href="#rc-glass"></use></svg>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--color-text)">Rich Cellar</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;font-size:13.5px;margin-bottom:20px">
+          <a href="#1c">Les caves</a><a href="#1c">Cépages</a><a href="#1c">Ma cave</a><a href="#1c">Connexion</a><a href="#1c">À propos</a><a href="#1c">Contact</a>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.5;color:rgba(43,32,24,.45)">© 2026 Rich Cellar · L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<p class="dv-next">Essaie ensuite : « fais la version connexion / créer un compte » · « ajoute la page Ma Cave » · « hero avec un aplat bordeaux plein-cadre » · « propose 2 variantes de hero pour le desktop »</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Scanner une bouteille&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenu&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { ctaLabel: this.props.ctaLabel ?? "Scanner une bouteille" };
+  }
+}
+
+</script>
+</body>
+</html>

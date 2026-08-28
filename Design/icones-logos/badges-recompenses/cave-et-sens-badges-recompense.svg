@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 280" font-family="'Plus Jakarta Sans', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf6ee"/>
+      <stop offset="100%" stop-color="#f0e6d6"/>
+    </linearGradient>
+
+    <radialGradient id="inner" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#5c2033"/>
+      <stop offset="100%" stop-color="#2b0e17"/>
+    </radialGradient>
+
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0a469"/><stop offset="100%" stop-color="#93502a"/>
+    </linearGradient>
+    <linearGradient id="argent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9e3d6"/><stop offset="100%" stop-color="#a89a7d"/>
+    </linearGradient>
+    <linearGradient id="or" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6dd8c"/><stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+    <linearGradient id="rubis" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c85c72"/><stop offset="100%" stop-color="#6e1a30"/>
+    </linearGradient>
+    <linearGradient id="amethyste" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b389df"/><stop offset="100%" stop-color="#4a2c6d"/>
+    </linearGradient>
+    <linearGradient id="emeraude" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fd6a8"/><stop offset="100%" stop-color="#1f6b4a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1320" height="280" fill="url(#bg)"/>
+
+  <!-- 1. 10 vins - Premier Cru (bronze) -->
+  <g transform="translate(110,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#bronze)" stroke="#3a2118" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,68)" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <path d="M -13,-18 C -13,-2 -13,10 0,14 C 13,10 13,-2 13,-18 Z" fill="#ffffff" fill-opacity="0.85" stroke-width="2.6"/>
+      <path d="M 0,14 L 0,24 M -9,28 L 9,28" fill="none"/>
+    </g>
+    <text x="0" y="131" text-anchor="middle" font-family="'Playfair Display', serif" font-size="41" font-weight="700" fill="#ffffff">10</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#7a4a24"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Premier Cru</text>
+  </g>
+
+  <!-- 2. 20 vins - Grand Cru (argent) -->
+  <g transform="translate(330,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#argent)" stroke="#3a3226" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,68)" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <path d="M -13,-18 C -13,-2 -13,10 0,14 C 13,10 13,-2 13,-18 Z" fill="#ffffff" fill-opacity="0.85" stroke-width="2.6"/>
+      <path d="M 0,14 L 0,24 M -9,28 L 9,28" fill="none"/>
+    </g>
+    <text x="0" y="131" text-anchor="middle" font-family="'Playfair Display', serif" font-size="41" font-weight="700" fill="#ffffff">20</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#6b6152"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Grand Cru</text>
+  </g>
+
+  <!-- 3. 30 vins - Cru Classé (or) -->
+  <g transform="translate(550,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#or)" stroke="#5c4712" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,68)" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <path d="M -13,-18 C -13,-2 -13,10 0,14 C 13,10 13,-2 13,-18 Z" fill="#ffffff" fill-opacity="0.85" stroke-width="2.6"/>
+      <path d="M 0,14 L 0,24 M -9,28 L 9,28" fill="none"/>
+    </g>
+    <text x="0" y="131" text-anchor="middle" font-family="'Playfair Display', serif" font-size="41" font-weight="700" fill="#ffffff">30</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#7a6a2e"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Cru Classé</text>
+  </g>
+
+  <!-- 4. 50 vins - Clos Réservé (rubis) -->
+  <g transform="translate(770,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#rubis)" stroke="#4a0f1f" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,68)" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <path d="M -13,-18 C -13,-2 -13,10 0,14 C 13,10 13,-2 13,-18 Z" fill="#ffffff" fill-opacity="0.85" stroke-width="2.6"/>
+      <path d="M 0,14 L 0,24 M -9,28 L 9,28" fill="none"/>
+    </g>
+    <text x="0" y="131" text-anchor="middle" font-family="'Playfair Display', serif" font-size="41" font-weight="700" fill="#ffffff">50</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#6e1a30"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Clos Réservé</text>
+  </g>
+
+  <!-- 5. 100 vins - Grand Vintage (améthyste) -->
+  <g transform="translate(990,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#amethyste)" stroke="#301c46" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,66)" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <path d="M -13,-18 C -13,-2 -13,10 0,14 C 13,10 13,-2 13,-18 Z" fill="#ffffff" fill-opacity="0.85" stroke-width="2.6"/>
+      <path d="M 0,14 L 0,24 M -9,28 L 9,28" fill="none"/>
+    </g>
+    <text x="0" y="131" text-anchor="middle" font-family="'Playfair Display', serif" font-size="41" font-weight="700" fill="#ffffff">100</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#4a2c6d"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Grand Vintage</text>
+  </g>
+
+  <!-- 6. Partage - Sommelier Social (émeraude) -->
+  <g transform="translate(1210,0)">
+    <circle cx="0" cy="95" r="74" fill="url(#emeraude)" stroke="#0f3a26" stroke-width="2"/>
+    <circle cx="0" cy="95" r="63" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle cx="0" cy="95" r="58" fill="url(#inner)"/>
+    <g transform="translate(0,80)" stroke="#ffffff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+      <circle cx="-16" cy="0" r="6.5" fill="#ffffff" fill-opacity="0.9" stroke="none"/>
+      <circle cx="8" cy="-16" r="6.5" fill="#ffffff" fill-opacity="0.9" stroke="none"/>
+      <circle cx="8" cy="16" r="6.5" fill="#ffffff" fill-opacity="0.9" stroke="none"/>
+      <path d="M -11,-3 L 3,-13 M -11,3 L 3,13"/>
+    </g>
+    <text x="0" y="134" text-anchor="middle" font-family="'Playfair Display', serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.5">PARTAGE</text>
+    <g stroke="#ffffff" stroke-opacity="0.55" fill="none" stroke-width="2.4">
+      <path d="M -46,110 Q -58,90 -50,68"/>
+      <path d="M 46,110 Q 58,90 50,68"/>
+    </g>
+    <g fill="#ffffff" fill-opacity="0.55">
+      <ellipse cx="-50" cy="68" rx="4" ry="7" transform="rotate(-30 -50 68)"/>
+      <ellipse cx="-52" cy="82" rx="4" ry="7" transform="rotate(-10 -52 82)"/>
+      <ellipse cx="-49" cy="97" rx="4" ry="7" transform="rotate(15 -49 97)"/>
+      <ellipse cx="50" cy="68" rx="4" ry="7" transform="rotate(30 50 68)"/>
+      <ellipse cx="52" cy="82" rx="4" ry="7" transform="rotate(10 52 82)"/>
+      <ellipse cx="49" cy="97" rx="4" ry="7" transform="rotate(-15 49 97)"/>
+    </g>
+    <rect x="-99" y="150" width="198" height="44" rx="22" fill="#1f6b4a"/>
+    <text x="0" y="180" text-anchor="middle" font-family="'Playfair Display', serif" font-style="italic" font-weight="700" font-size="24" fill="#ffffff">Sommelier Social</text>
+  </g>
+</svg>
