@@ -41,13 +41,13 @@ cadre du titre professionnel DWWM.
 
 | Élément | État | Où |
 |---|---|---|
-| Maquettes des 10 écrans | Terminées | Drive design partagé |
+| Maquettes des 10 écrans | Terminées ; l'accueil + les wireframes de plusieurs écrans sont désormais **versionnés** *(MAJ 28/08 – design)* | `Design/maquettes/` et `Design/wireframing/` (PR #3) |
 | **Les 10 écrans** *(MAJ 28/08)* | **Tous codés** (React/Vite) et navigables, mais alimentés par des **données mock** (`front-end/src/data/wines.js`) — **pas encore branchés sur l'API** | Branche `front`, dossier `front-end/src/pages/` |
 | Vérification d'âge à l'inscription *(MAJ 28/08)* | **Implémentée** côté client (CNI + webcam) ; RGPD : seul un booléen `ageVerified` est conservé | Branche `front` (voir §12) |
 | Couche API typée (auth, wine, cave, profile) *(MAJ 28/08)* | **Écrite**, format d'auth tranché (cookie JWT `HttpOnly`), mais non appelée par les écrans | `front-end/src/api/` (voir §9) |
 | Schéma de base de données | Corrigé le 24/08, table `utilisateur_cave` ajoutée | `docs/` (voir §6) |
 | Contrat d'API | Figé le 24/08 (types partagés) | `shared/types/` (voir §9) |
-| Package graphique (icônes, logos, tokens) | Livré | Drive design partagé |
+| Package graphique (logos, favicon, badges, images) | Livré et **versionné dans le repo** *(MAJ 28/08 – design)* | `Design/icones-logos/`, `Design/images/` (PR #3) |
 | Serveur Hostinger | Configuré, accès FTP | Voir §11 |
 
 ### Ce qui n'existe PAS encore — ne cherche pas, ce n'est pas perdu
@@ -136,6 +136,11 @@ cave-a-vins/
 >   (et **non** `front/`), avec son propre `front-end/docs/`.
 > - Le back-end a été poussé par Orian dans **`backend/`** (NestJS). ⚠️ **Il a été
 >   committé directement sur `main`, sans PR** — pense à rappeler la règle §10.
+> - Le matériel design a été fusionné dans **`Design/`** (PR #3) : logos/favicon
+>   (`Design/icones-logos/`), badges récompenses, images, maquettes d'accueil
+>   (`Design/maquettes/`, dont des canvas `.dc.html` + un lien Google Stitch) et
+>   wireframes (`Design/wireframing/`). ⚠️ **~21 Mo de binaires** y sont entrés
+>   dans l'historique public — à garder en tête avant d'en rajouter.
 > - Quand tu suis le §6, remplace les `cd front` par `cd front-end`. Le back
 >   utilise **pnpm** (`pnpm install`), pas npm, et **PostgreSQL**, pas MariaDB
 >   (voir Annexe B). L'essentiel du back est encore un **prototype en mémoire** :
@@ -427,7 +432,8 @@ retrouve dans sa cave après rechargement de la page.
 |---|---|
 | Dépôt GitHub | <https://github.com/madmolf/cave-a-vins> |
 | Kanban / backlog (Google Docs) | <https://docs.google.com/document/d/13HwVxXBTDOuMGc_NFUlwqpu7jy4VaB_gMywz8g5oFMg/edit> |
-| Drive design (maquettes, icônes, tokens) | `<!-- lien -->` |
+| Matériel design (logos, badges, maquettes, wireframes) | Versionné dans le repo → **`Design/`** *(MAJ 28/08)* |
+| Maquette d'accueil (Google Stitch) | <https://stitch.withgoogle.com/preview/10014197707999396519> (voir `Design/maquettes/lien-maquette-stitch.txt`) |
 | API tierce GrapeMinds (référentiel des vins) | <https://grapeminds.fr/> |
 | API du projet en production | Aucune — pas encore déployée (voir §11) |
 | Chef de projet | Alexandre GAILLARD |
